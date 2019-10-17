@@ -1,0 +1,2411 @@
+<!-- 业务管理区划的添加  和  修改 -->
+<div *ngIf="type.two === '2-2'">
+                <div style="width: 100%;height:30rem">
+                    <div>
+                       <label style="color: crimson">*</label>
+                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">业务管理区划编号</span>
+                            <smx-input-number *ngIf="data"
+                                    [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                    [smxPlaceholder]="'请输入'"
+                                    [(ngModel)]='data.canton_id'
+                                    [smxDisabled]='isEdit ? false : true'
+                                    (blur)="cantonBlur()"
+                            ></smx-input-number>
+                    </div>
+                    <div style="margin-top: 1.07rem">
+                        <label style="color: crimson">*</label>
+                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">业务管理区划名称</span>
+                            <smx-input *ngIf="data"
+                                    [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                    [smxPlaceholder]="'请输入'"
+                                    [(ngModel)]='data.canton_name'
+                                    (blur)="cantonBlur()"
+                            ></smx-input>
+                    </div>
+                    <div style="margin-top: 1.07rem">
+                        <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">备注</span>
+                            <smx-input *ngIf="data"
+                                    [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                                    [smxPlaceholder]="'请输入'"
+                                    [(ngModel)]='data.canton_desc'
+                      ></smx-input>
+                    </div>
+                    <div style="margin-top: 1.07rem;width: 100%">
+                        <span style="float: left;width: 8rem;line-height: 2.14rem;text-align: -webkit-right;" >入库日期</span>
+                        <div style="margin-left: 1.43rem;float:left">
+                            <smx-date-time-pick *ngIf="appdate"     
+                                    [(ngModel)]="appdate.app_date"
+                                    [smxDisabled]="true"
+                            ></smx-date-time-pick>
+                        </div>
+                    </div>
+                    <label class="smx-gh-biaozhu">
+                                    注:(带符号*为必填项)
+                    </label>
+                </div>
+                <div class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                          取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="activeModal.close(data)"
+                                [disabled]="police_tel_isExist && is_no_sursubmit && tel_isExist  ? false: true"
+                                type="button">确定
+                        </button>
+                </div>
+            </div>
+<!-- 行政区划管理 增 改 -->
+<div *ngIf="type.two === '4-2'">
+        <div style="width: 100%;height:30rem">
+        <div>
+                <label style="color: crimson">*</label>
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">行政管理区划编号</span>
+                <smx-input-number *ngIf="data"
+                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                        [smxPlaceholder]="'请输入'"
+                        [(ngModel)]='data.admin_area_id'
+                        [smxDisabled]='isEdit ? false : true'
+                        (change)="adminBlur()"
+                ></smx-input-number>
+        </div>
+        <div style="margin-top: 1.07rem">
+                <label style="color: crimson">*</label>
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">行政管理区划名称</span>
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]='data.admin_area_name'
+                                (change)="adminBlur()">
+                        </smx-input>
+        </div>
+        <div style="margin-top: 1.07rem">
+                <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">边界描述</span>
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]='data.admin_area_desc'>
+                        </smx-input>
+        </div>
+        <div style="margin-top: 1.07rem;width: 100%">
+                <span style="float: left;width: 8rem;line-height: 2.14rem;text-align: -webkit-right;" >入库日期</span>
+                <div style="margin-left: 1.43rem;float:left">
+                        <smx-date-time-pick 
+                                [(ngModel)]="appdate.app_date"
+                                [smxDisabled]="true"
+                        ></smx-date-time-pick>
+                </div>
+        </div>
+        <label class="smx-gh-biaozhu">
+                        注:(带符号*为必填项)
+        </label>
+        </div>
+        <div class="smx-modal-footer">
+                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                取消
+                </button>
+                <button class="smx-btn smx-default smx-grid" 
+                        (click)="activeModal.close(data)"
+                        type="button"
+                        [disabled]="police_tel_isExist  && is_no_sursubmit && tel_isExist  ? false: true"
+                        >确定
+                </button>
+        </div>
+</div>
+
+<!-- 街道维护的添加  和  修改 -->
+<div *ngIf="type.two === '6-2'">
+        <div style="width: 100%;height:30rem">
+        <div>
+                <label style="color: crimson;position: relative;left: 3.71rem;">*</label>
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">街道名称</span>
+                <smx-input
+                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                        [smxPlaceholder]="'请输入'"
+                        [(ngModel)]='data.street_name'
+                        (change)="streetBlur()"
+                ></smx-input>
+        </div>
+        <div style="margin-top: 0.36rem">
+                <label style="color: crimson;position: relative;left: 1.71rem;">*</label>
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">所属行政区划</span> 
+                <smx-select
+                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                        [smxPlaceholder]="''"
+                        [smxHeight]="25"
+                        [options]='selectValue'
+                        [(ngModel)]="data.admin_area_id"
+                        [smxToNumber]=true
+                        (change) = "streetBlur()"
+                        style="display: inline-block;height: 1.9rem;"
+                ></smx-select>
+        </div>
+        <div style="margin-top: 0.57rem">
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">街道办事处</span>
+                <smx-input
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                        [(ngModel)]='data.office_addr'
+                        [smxPlaceholder]="'请输入'">
+                </smx-input>
+        </div>
+        <div style="margin-top: 1.07rem">
+                <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">联系人</span>
+                <smx-input
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                        [(ngModel)]='data.link_man'
+                        [smxPlaceholder]="'请输入'">
+                </smx-input>
+        </div>
+        <div style="margin-top: 1.07rem">
+                <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">电话</span>
+                <smx-input *ngIf = "!tel_isExist"
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem','background':'red'}"
+                        [(ngModel)]='data.tel'
+                        [smxPlaceholder]="'请输入'"
+                        (blur)="telMatch()"
+                        >
+                </smx-input>
+                <smx-input *ngIf = "tel_isExist"
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                        [(ngModel)]='data.tel'
+                        [smxPlaceholder]="'请输入'"
+                        (blur)="telMatch()"
+                        >
+                </smx-input>
+        </div>
+        <div style="margin-top: 1.07rem">
+                        <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">所属派出所</span>
+                <smx-input
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                        [(ngModel)]='data.police_station'
+                        [smxPlaceholder]="'请输入'">
+                </smx-input>
+        </div>
+        <div style="margin-top: 1.07rem">
+                        <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">边界描述</span>
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                                [(ngModel)]='data.note'
+                                [smxPlaceholder]="'请输入'">
+                        </smx-input>
+        </div>
+        <div style="margin-top: 1.07rem;width: 100%">
+                <span style="float: left;width: 8rem;line-height: 2.14rem;text-align: -webkit-right;" >入库日期</span>
+                <div style="margin-left: 1.43rem;float:left">
+                        <smx-date-time-pick *ngIf="appdate"     
+                                [(ngModel)]="appdate.app_date"
+                                [smxDisabled]="true"
+                        ></smx-date-time-pick>
+                </div>
+        </div>
+        <label style="top: 7rem" class="smx-gh-biaozhu">
+                        注:(带符号*为必填项)
+        </label>
+        </div>
+        <div class="smx-modal-footer">
+                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                取消
+                </button>
+                <button class="smx-btn smx-default smx-grid" 
+                        (click)="activeModal.close(data);"
+                        [disabled]="police_tel_isExist && is_no_sursubmit && tel_isExist ? false: true"
+                        type="button">确定
+                </button>
+        </div>
+        <!-- <div class="smx-modal-footer">
+                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss('Cross click');" type="button">
+                        上一步
+                </button>
+                <button class="smx-btn smx-default smx-grid" 
+                        (click)="submit(activeModal)"
+                        type="button">确定
+                </button>
+        </div> -->
+</div>
+
+
+<!-- 社区维护的添加  和  修改 -->
+<div *ngIf="type.two === '8-2'">
+        <div style="width: 100%;height:30rem">
+        <div>
+                <label style="color: crimson;position: relative;left: 3.64rem;">*</label>
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">社区名称</span>
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]='data.community_name'
+                                (change)="communityBlur()"
+                        ></smx-input>
+        </div>
+        <div style="margin-top: 0.36rem">
+                <label style="color: crimson;position: relative;left: 1.8rem;">*</label>
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">所属行政区划</span> 
+                        <smx-select
+                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                [smxPlaceholder]="''"
+                                [smxHeight]="25"
+                                [options]='selectValue'
+                                [(ngModel)]="data.admin_area_id"
+                                [smxToNumber]=true
+                                (change)="communityBlur()"
+                                style="display: inline-block;height: 1.9rem;"
+                        ></smx-select>
+        </div>
+        <div style="margin-top: 0.36rem">
+                <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">居委会名称</span>
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]='data.club_name'
+                        ></smx-input>
+        </div>
+        
+        <div style="margin-top: 1.07rem">
+                <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">联系人</span>
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]='data.link_man'
+                        ></smx-input>
+        </div>
+        <div style="margin-top: 1.07rem">
+                <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">电话</span>
+                        <smx-input *ngIf = "!tel_isExist"
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem','background':'red'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]='data.tel'
+                                (blur)="telMatch()"
+                        ></smx-input>
+                        <smx-input *ngIf = "tel_isExist"
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]='data.tel'
+                                (blur)="telMatch()"
+                        ></smx-input>
+        </div>
+        <div style="margin-top: 1.07rem">
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">片警姓名</span>
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]='data.police_name'
+                        ></smx-input>
+        </div>
+        <div style="margin-top: 1.07rem">
+                        <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">片警电话</span>
+                        <smx-input *ngIf = "!police_tel_isExist"
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem','background':'red'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]='data.police_tel'
+                                (blur)="telMatch()"
+                        ></smx-input>
+                        <smx-input *ngIf = "police_tel_isExist"
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]='data.police_tel'
+                                (blur)="telMatch()"
+                        ></smx-input>
+        </div>
+        
+        <div style="margin-top: 1.07rem;width: 100%">
+                <span style="float: left;width: 8rem;line-height: 2.14rem;text-align: -webkit-right;" >入库日期</span>
+                <div style="margin-left: 1.43rem;float:left">
+                        <smx-date-time-pick *ngIf="appdate"     
+                                [(ngModel)]="appdate.app_date"
+                                [smxDisabled]="true"
+                        ></smx-date-time-pick>
+                </div>
+        </div>
+        <label style="top:7.5rem"  class="smx-gh-biaozhu">
+                        注:(带符号*为必填项)
+        </label>
+        </div>
+        <div class="smx-modal-footer">
+                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                取消
+                </button>
+                <button class="smx-btn smx-default smx-grid" 
+                        (click)="activeModal.close(data);"
+                        [disabled]="police_tel_isExist && is_no_sursubmit  && tel_isExist ? false: true"
+                        type="button">确定
+                </button>
+        </div>
+        <!-- <div class="smx-modal-footer">
+                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss('Cross click');" type="button">
+                        上一步
+                </button>
+                <button class="smx-btn smx-default smx-grid" 
+                        (click)="submit(activeModal)"
+                        type="button">确定
+                </button>
+        </div> -->
+</div>
+
+
+<!-- 小区维护的添加  和  修改 -->
+<div *ngIf="type.two === '10-2'">
+        <div style="width: 100%;height:32rem">
+        <div>
+                <label style="color: crimson;position: relative;left: 3.71rem;">*</label>
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">小区名称</span>
+                <smx-input
+                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                [smxPlaceholder]="'请输入'"
+                [(ngModel)]='data.resi_name'
+                (change)="resiBlur()"
+                ></smx-input>
+        </div>
+        <div style="margin-top: 0.36rem">
+                <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">小区简称</span>
+                <smx-input
+                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                [smxPlaceholder]="'请输入'"
+                [(ngModel)]='data.resi_short_name'
+                ></smx-input>
+        </div>
+        <div style="margin-top: 0.64rem">
+                <label style="color: crimson;position: relative;left: 1.76rem;">*</label>
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">所属行政区划</span> 
+                <smx-select
+                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                        [smxPlaceholder]="''"
+                        [smxHeight]="25"
+                        [options]='selectValue'
+                        [(ngModel)]="data.admin_area_id"
+                        [smxToNumber]=true
+                        (change)="resiBlur()"
+                        style="display: inline-block;height: 1.9rem;"
+                ></smx-select>
+        </div>
+        <div style="margin-top: 0.36rem">
+                <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">小区拼音</span>
+                <smx-input
+                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                [smxPlaceholder]="'请输入'"
+                [(ngModel)]='data.resi_py'
+                ></smx-input>
+        </div>
+        <div style="margin-top: 0.64rem">
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">小区商业属性</span> 
+                <smx-select
+                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                [smxPlaceholder]="''"
+                [smxHeight]="25"
+                [options]='small_slip'
+                style="display: inline-block;height: 1.9rem;"
+                [smxToNumber]=true
+                [(ngModel)]='data.buss_attr'
+                (change)="resiBlur()"
+                ></smx-select>
+        </div>
+        <div style="margin-top: 0.64rem">
+                <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">小区物业名称</span>
+                <smx-input
+                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                [smxPlaceholder]="'请输入'"
+                [(ngModel)]='data.property_name'
+                ></smx-input>
+        </div>
+        <div style="margin-top: 0.64rem">
+                        <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">小区物业公司</span>
+                        <smx-input
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                        [smxPlaceholder]="'请输入'"
+                        [(ngModel)]='data.property_company'
+                        ></smx-input>
+                </div>
+        <div style="margin-top: 1.07rem">
+                <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">联系人</span>
+                <smx-input
+                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                [smxPlaceholder]="'请输入'"
+                [(ngModel)]='data.link_man'></smx-input>
+                </div>
+        <div style="margin-top: 1.07rem">
+                <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">联系人电话</span>
+                <smx-input *ngIf = "!tel_isExist"
+                [smxStyle]="{'width':'15rem','margin-left': '1.43rem','background':'red'}"
+                [smxPlaceholder]="'请输入'"
+                [(ngModel)]='data.tel'
+                (blur)="telMatch()"></smx-input>
+                <smx-input *ngIf = "tel_isExist"
+                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                [smxPlaceholder]="'请输入'"
+                [(ngModel)]='data.tel'
+                (blur)="telMatch()"></smx-input>
+        </div>
+        <div style="margin-top: 1.07rem">
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">是否有小前端</span> 
+                <smx-select
+                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                [smxPlaceholder]="''"
+                [smxHeight]="25"
+                [options]='is_non_select'
+                style="display: inline-block;height: 1.9rem;"
+                [(ngModel)]='data.is_small'
+                [smxToNumber]=true
+                ></smx-select>
+        </div>
+        <div style="margin-top: 1.07rem">
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">是否改电</span> 
+                <smx-select
+                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                [smxPlaceholder]="''"
+                [smxHeight]="25"
+                [options]='is_non_select'
+                style="display: inline-block;height: 1.9rem;"
+                [(ngModel)]="data.is_change_ele"
+                [smxToNumber]=true
+                ></smx-select>
+        </div>
+        <div style="margin-top: 1.07rem">
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">是否签署供电协议</span> 
+                <smx-select
+                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                [smxPlaceholder]="''"
+                [smxHeight]="25"
+                [options]='is_non_select'
+                style="display: inline-block;height: 1.9rem;"
+                [(ngModel)]='data.is_ps_pro'
+                [smxToNumber]=true
+                ></smx-select>
+        </div>
+        <label style="top: 0.3rem;"  class="smx-gh-biaozhu">
+                        注:(带符号*为必填项)
+        </label>
+        </div>
+        <div class="smx-modal-footer">
+                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                取消
+                </button>
+                <button class="smx-btn smx-default smx-grid" 
+                        (click)="activeModal.close(data);"
+                        [disabled]="police_tel_isExist && is_no_sursubmit  && tel_isExist ? false: true"
+                        type="button">确定
+                </button>
+        </div>
+        <!-- <div class="smx-modal-footer">
+                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss('Cross click');" type="button">
+                        上一步
+                </button>
+                <button class="smx-btn smx-default smx-grid" 
+                        (click)="submit(activeModal)"
+                        type="button">确定
+                </button>
+        </div> -->
+</div>
+
+
+<!-- 片区维护的添加  和  修改 -->
+<div *ngIf="type.two === '12-2'">
+        <div style="width: 100%;height:30rem">
+        <div>
+                <label style="color: crimson;position: relative;left: 3.86rem;">*</label>
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">片区名称</span>
+                <smx-input
+                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                [smxPlaceholder]="'请输入'"
+                [(ngModel)]='data.slip_community_name'
+                (change)="slip_communityBlur()"
+                ></smx-input>
+        </div>
+        <div style="margin-top: 0.5rem">
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">片区类型</span> 
+                <smx-select
+                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                [smxPlaceholder]="''"
+                [smxHeight]="25"
+                [options]='selectValue'
+                [(ngModel)]="data.slip_community_type_id"
+                [smxToNumber]=true
+                style="display: inline-block;height: 1.9rem;"
+                ></smx-select>
+        </div>
+        <div style="margin-top: 0.64rem">
+                <label style="color: crimson;position: relative;left: 4.9rem;">*</label>
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">联系人</span>
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]="data.link_man"
+                                (change)="slip_communityBlur()"
+                        ></smx-input>
+        </div>
+        <div style="margin-top: 0.43rem">
+                <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">电话</span>
+                <smx-input *ngIf = "!tel_isExist"
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem','background':'red'}"
+                        [smxPlaceholder]="'请输入'"
+                        [(ngModel)]="data.tel"
+                        (blur)="telMatch()"
+                ></smx-input>
+                <smx-input *ngIf = "tel_isExist"
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                        [smxPlaceholder]="'请输入'"
+                        [(ngModel)]="data.tel"
+                        (blur)="telMatch()"
+                ></smx-input>
+        </div>
+        <div style="margin-top: 0.79rem;width: 100%">
+                <span style="float: left;width: 8rem;line-height: 2.14rem;text-align: -webkit-right;" >入库日期</span>
+                <div style="margin-left: 1.43rem;float:left">
+                <smx-date-time-pick        
+                [(ngModel)]="appdate.app_date"
+                [smxStyle]="{'width':'15rem','margin-left': '0rem'}"
+                [smxDisabled]="true"
+                ></smx-date-time-pick>
+                </div>
+        </div>
+        <label style="top: 16.5rem;"  class="smx-gh-biaozhu">
+                        注:(带符号*为必填项)
+        </label>
+        </div>
+        <div class="smx-modal-footer">
+                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                取消
+                </button>
+                <button class="smx-btn smx-default smx-grid" 
+                        (click)="activeModal.close(data)"
+                        [disabled]="police_tel_isExist && is_no_sursubmit  && tel_isExist ? false: true"
+                        type="button">确定
+                </button>
+        </div>
+        <!-- <div class="smx-modal-footer">
+                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss('Cross click');" type="button">
+                        上一步
+                </button>
+                <button class="smx-btn smx-default smx-grid" 
+                        (click)="submit(activeModal)"
+                        type="button">确定
+                </button>
+        </div> -->
+</div>
+
+<!-- 批量导入 -->
+<div *ngIf="type === 13">
+                <div style="width: 21.42rem;display: inline-block">
+                        <smx-upload
+                        [smxStyle]="{width:'100%'}"
+                        (uploadEnd)="selectFile($event)"
+                        [smxAccept]="['xls', 'xlsx']"
+                        >
+                        </smx-upload>
+                </div>
+                <div style="display: inline-block;margin-left: 10px;"> 
+                        <button class="smx-btn smx-default smx-grid"
+                        (click)="upFile()"   
+                        type="button">上传
+                        </button>
+                </div>
+                <div>
+                        请选择电子表格xls或xlsx文件进行处理，电子表格分为六列为【用户站名称】【业务管理区划】【行政区划】【建筑物类型】【地址描述】【单元门地址描述】
+                </div>
+                <div style="height: 21px; color: red;text-align: center">
+                        <span> {{fileStatus}}</span>
+                       
+                </div>
+                <div *ngIf="upStatus" class="smx-loading">
+                        <nz-spin nzSimple></nz-spin>
+                </div>
+                <div class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="upload()"
+                                [disabled] = " isUpdate ? false : true"
+                                type="button">导入
+                        </button>
+                </div> 
+</div>
+
+
+<!-- 小区类型维护 -->
+<div *ngIf="type.two === '15-2'">
+        <div style="margin-top: 1.07rem;    height: 5rem;">
+                <label style="color: crimson;position: relative;left: 3.9rem;">*</label>
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">小区类型</span>
+                <smx-input
+                        [(ngModel)]= "data.type_name"
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                        [smxPlaceholder]="'请输入'"
+                        (change)="res_resliceChange('res_resli')"
+                ></smx-input>
+        </div>
+        <div class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                        取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="activeModal.close(data);"
+                                [disabled]="rescom_type ? false: true"
+                                type="button">确定
+                        </button>
+        </div>
+</div>
+
+<!-- 片区类型维护 -->
+<div *ngIf="type.two === '17-2'">
+        <div style="margin-top: 1.07rem;    height: 5rem;">
+                <label style="color: crimson;position: relative;left: 3.9rem;">*</label>
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">片区类型</span>
+                <smx-input
+                        [(ngModel)]= "data.type_name"
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                        [smxPlaceholder]="'请输入'"
+                        (change)="res_resliceChange('res_resli')"
+                ></smx-input>
+        </div>
+        <div class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                        取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="activeModal.close(data);"
+                                [disabled]="reslice_type ? false: true"
+                                type="button">确定
+                        </button>
+        </div>
+</div>
+
+<!-- 地址更新 添加地址、修改 -->
+<div *ngIf="type.two === '19-2'">
+<div style="width: 100%;height:30rem">
+<div style="margin-top: 1.07rem">
+        <label style="color: crimson;position: relative;left: 3.86rem;">*</label>
+        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">行政区划</span> 
+        <smx-select
+        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+        [smxPlaceholder]="''"
+        [smxHeight]="25"
+        [smxToNumber]=true
+        [options]='selectDataAdmin'
+        [(ngModel)]="data.admin_area_id"
+        (onChange)="addresACUS($event,'admin_area_id')"
+        style="display: inline-block;height: 1.9rem;"
+        ></smx-select>
+</div>
+<div style="margin-top: 0.36rem">
+        <label style="color: crimson;position: relative;left: 1.8rem;">*</label>
+        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">业务管理区划</span> 
+        <smx-select
+        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+        [smxPlaceholder]="''"
+        [smxHeight]="25"
+        [smxToNumber]=true
+        [options]='selectDataCanton'
+        [(ngModel)]="data.canton_id"
+        (onChange)="addresACUS($event,'canton_id')"
+        style="display: inline-block;height: 1.9rem;"
+        ></smx-select>
+</div>
+<div style="margin-top: 0.36rem">
+                <label style="color: crimson;position: relative;left: 4.7rem;">*</label>
+                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">用户站</span> 
+                <smx-select
+                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                [smxPlaceholder]="''"
+                [smxHeight]="25"
+                [smxToNumber]=true
+                [options]='selectDataUser'
+                [(ngModel)]="data.user_station_id"
+                (onChange)="addresACUS($event,'user_station_id')"
+                style="display: inline-block;height: 1.9rem;"
+                ></smx-select>
+        </div>
+        <div style="margin-top: 0.36rem">
+                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">街道</span> 
+                        <smx-select
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                        [smxPlaceholder]="''"
+                        [smxHeight]="25"
+                        [smxToNumber]=true
+                        [options]='selectDataStreet'
+                        [(ngModel)]="data.street_id"
+                        (onChange)="addresACUS($event,'street_id')"
+                        style="display: inline-block;height: 1.9rem;"
+                        ></smx-select>
+        </div>
+        <div style="margin-top: 0.36rem">
+                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">小区</span>
+                        <smx-input
+                                [(ngModel)]="data.resi_name"
+                                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                                [smxPlaceholder]="'请选择小区'"
+                                (keyup)="resicommunityThink('resicommunity')"
+                        ></smx-input>
+                        <span style="margin-left: 10px;color: red;">{{xiaoqu}}</span>
+        </div>
+        <div style="margin-top: 0.36rem">
+                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">社区</span>
+                        <smx-input
+                                [(ngModel)]="data.community_name"
+                                [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                                [smxPlaceholder]="'请选择社区'"
+                                (keyup)="resicommunityThink('community')"
+                        ></smx-input>
+                        <span style="margin-left: 10px;color: red;">{{shequ}}</span>
+        </div>
+        <div style="margin-top: 0.36rem">
+                        <label style="color: crimson;position: relative;left: 3.86rem;">*</label>
+                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">建筑形式</span> 
+                        <smx-select
+                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                        [smxPlaceholder]="''"
+                        [smxHeight]="25"
+                        [smxToNumber]=true
+                        [options]='addarch_form'
+                        [(ngModel)]="data.arch_form"
+                        style="display: inline-block;height: 1.9rem;"
+                        ></smx-select>
+        </div>
+        <div style="margin-top: 0.36rem">
+                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">地址关键字</span>
+                        <smx-input
+                        [(ngModel)]="data.addr_key"
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                        [smxPlaceholder]="'请输入'"></smx-input>
+        </div>
+        <div style="margin-top: 0.36rem">
+                        <label style="color: crimson;position: relative;left: 3.86rem;">*</label>
+                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">地址描述</span>
+                        <smx-input
+                                [(ngModel)]="data.addr_desc"
+                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                (change)="addr_descChange()"
+                        ></smx-input>
+        </div>
+        <!--  <div style="margin-top: 5px">
+                        <span style="display: inline-block;text-align: -webkit-right;width: 112px;">地址是否启用</span> 
+                        <smx-select
+                        [smxStyle]="{'width':'15rem','margin-left': '1.43rem'}"
+                        [smxPlaceholder]="''"
+                        [smxHeight]="25"
+                        [smxToNumber]=true
+                        [options]='add_is_used'
+                        [(ngModel)]="data.is_used"
+                        style="display: inline-block;height: 1.9rem;"
+                        ></smx-select>
+        </div> -->
+        <div *ngIf="addres_updata" style="margin-top: 5px">
+                <span style="display: inline-block;text-align: -webkit-right;width: 112px;">灵图描述</span>
+                <smx-input
+                [smxDisabled]=true
+                [smxStyle]="{'width':'15rem','margin-left': '20px','background':'#dad3d3ee'}"
+                [smxPlaceholder]="' '"></smx-input>
+        </div>
+        <div *ngIf="addres_updata" style="margin-top: 5px">
+                <span style="display: inline-block;text-align: -webkit-right;width: 112px;">经度</span>
+                <smx-input
+                [smxDisabled]=true
+                [smxStyle]="{'width':'15rem','margin-left': '20px','background':'#dad3d3ee'}"
+                [smxPlaceholder]="' '"></smx-input>
+        </div>
+        <div *ngIf="addres_updata" style="margin-top: 5px">
+        <span style="display: inline-block;text-align: -webkit-right;width: 112px;">纬度</span>
+                <smx-input
+                [smxDisabled]=true
+                [smxStyle]="{'width':'15rem','margin-left': '20px','background':'#dad3d3ee'}"
+                [smxPlaceholder]="' '"></smx-input>
+        </div>
+        <div>
+                <div style="position: relative;left: 1.1rem;">
+                        <input (click)='addresRadio("one")' class="smx-radio" type="radio" name="name" value="1"> 单个添加门址
+                        <input (click)='addresRadio("more")' class="smx-radio" type="radio" name="name" value="2"> 批量添加门址
+                        <input (click)='addresRadio("no")' [checked]='true' class="smx-radio" type="radio" name="name" value="3"> 不添加门址信息
+                </div>
+        </div>
+        <label [ngClass]="{'smx-gh-biaozhu-addres-add' : addres_updata !== true , 
+                                'smx-gh-biaozhu-addres-updata': addres_updata === true }">
+                        注:(带符号*为必填项)
+        </label>
+
+</div>
+<div class="smx-modal-footer">
+        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+        取消
+        </button>
+        <button class="smx-btn smx-default smx-grid" 
+                (click)="activeModal.close(data)"
+                [disabled]="addres_istrue ? false: true"
+                type="button">确定
+        </button>
+</div>
+                <!-- <div class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss('Cross click');" type="button">
+                                上一步
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="submit(activeModal)"
+                                type="button">确定
+                        </button>
+                </div> -->
+</div>
+
+<!-- 地址合并 -->
+<div *ngIf="type === '19-3'">
+        <div class="grid-box">
+                        <table class="table table-bordered table-hover">
+                                <tbody style="height: 11.8rem">
+                                        <tr >
+                                                <th>          
+                                                </th> 
+                                                <td style="width:  19.29rem;font-weight: bolder;">地址描述</td>  
+                                                <td style="font-weight: bolder;">灵图描述</td> 
+                                        </tr>
+                                        <tr *ngFor="let item of data.combineData">
+                                        <th>
+                                                <input class="smx-radio" type="radio" (click)="selectCombineId(item)" 
+                                                name="name" value="1"> 
+                                        </th> 
+                                                <td  style="width:  19.29rem;">{{item.addr_desc}}</td>  
+                                                <td></td> 
+                                        </tr>
+                                </tbody>
+                        </table>
+        </div>
+
+       
+        <div class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="activeModal.close(data);"
+                                type="button">确定
+                        </button>
+        </div>
+</div>
+
+<!-- 分配小区 -->
+<div *ngIf="type === '19-4'">
+        <div style="margin-bottom: 1rem">   
+                <span style="width: 74px;display: inline-block;">
+                        小区名称
+                </span>
+
+                <smx-input
+                        [smxPlaceholder]="'请输入'"
+                        [smxStyle]="{'width':'15rem'}"
+                        [(ngModel)]="inputValue_think"
+                        (keyup)="changInputValue('小区')"
+                ></smx-input>
+        </div>
+        <div class="grid-box">
+                        <table class="table table-bordered table-hover">
+                                <tbody  style="height: 11.8rem">
+                                        <tr >
+                                                <th> 
+                                                        序号         
+                                                </th> 
+                                                <td style="width:  19.29rem;font-weight: bolder;">地址描述</td>  
+                                        </tr>
+                                        <tr *ngFor="let item of data.distributeData;index as i">
+                                                <th >
+                                                {{i+1}}  
+                                                </th> 
+                                        
+                                                <td  style="width:  19.29rem;">{{item.addr_desc}}</td>   
+                                        </tr>
+
+                                      
+                                </tbody>
+                        </table>
+        </div>
+        
+       
+        <div class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="activeModal.close(data);"
+                                [disabled]="fenpei ? false : true"
+                                type="button">确定
+                        </button>
+        </div>
+</div>
+
+<!-- 分配社区 -->
+
+<div *ngIf="type === '19-5'">
+                <div style="margin-bottom: 1rem">   
+                        <span style="width: 74px;display: inline-block;">
+                                社区名称
+                        </span>
+        
+                        <smx-input
+                                [smxPlaceholder]="'请输入'"
+                                [smxStyle]="{'width':'15rem'}"
+                                [(ngModel)]="inputValue_think"
+                                (keyup)="changInputValue('社区')"
+                        ></smx-input>
+                </div>
+                <div class="grid-box">
+                                <table class="table table-bordered table-hover">
+                                        <tbody  style="height: 11.8rem"> 
+                                                <tr >
+                                                        <th> 
+                                                                序号         
+                                                        </th> 
+                                                        <td style="width:  19.29rem;font-weight: bolder;">地址描述</td>  
+                                                </tr>
+                                                <tr *ngFor="let item of data.distributeData;index as i">
+                                                        <th >
+                                                        {{i+1}}  
+                                                        </th> 
+                                                
+                                                        <td  style="width:  19.29rem;">{{item.addr_desc}}</td>   
+                                                </tr>
+        
+                                              
+                                        </tbody>
+                                </table>
+                </div>
+       
+        <div class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="activeModal.close(data);"
+                                [disabled]="fenpei ? false : true"
+                                type="button">确定
+                        </button>
+        </div>
+</div>
+
+<!-- 分配片区 -->
+
+<div *ngIf="type === '19-6'">
+                <div style="margin-bottom: 1rem">   
+                        <span style="width: 74px;display: inline-block;">
+                                片区名称
+                        </span>
+        
+                        <smx-input
+                                [smxPlaceholder]="'请输入'"
+                                [smxStyle]="{'width':'15rem'}"
+                                [(ngModel)]="inputValue_think"
+                                (keyup)="changInputValue('片区')"
+                        ></smx-input>
+                </div>
+                <div class="grid-box">
+                                <table class="table table-bordered table-hover">
+                                        <tbody  style="height: 11.8rem">
+                                                <tr >
+                                                        <th> 
+                                                                序号         
+                                                        </th> 
+                                                        <td style="width:  19.29rem;font-weight: bolder;">地址描述</td>  
+                                                </tr>
+                                                <tr *ngFor="let item of data.distributeData;index as i">
+                                                        <th >
+                                                        {{i+1}}  
+                                                        </th> 
+                                                
+                                                        <td  style="width:  19.29rem;">{{item.addr_desc}}</td>   
+                                                </tr>
+        
+        
+                                              
+                                        </tbody>
+                                </table>
+                </div>
+       
+        <div class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="activeModal.close(data);"
+                                [disabled]="fenpei ? false : true"
+                                type="button">确定
+                        </button>
+        </div>
+</div>
+
+<!-- 分配街道 -->
+
+<div *ngIf="type === '19-7'">
+                <div style="margin-bottom: 1rem">   
+                        <span style="width: 74px;display: inline-block;">
+                                街道名称
+                        </span>
+        
+                        <smx-input
+                                [smxPlaceholder]="'请输入'"
+                                [smxStyle]="{'width':'15rem'}"
+                                [(ngModel)]="inputValue_think"
+                                (keyup)="changInputValue('街道')"
+                        ></smx-input>
+                </div>
+                <div class="grid-box">
+                                <table class="table table-bordered table-hover">
+                                        <tbody  style="height: 11.8rem">
+                                                <tr >
+                                                        <th> 
+                                                                序号         
+                                                        </th> 
+                                                        <td style="width:  19.29rem;font-weight: bolder;">地址描述</td>  
+                                                </tr>
+                                                <tr *ngFor="let item of data.distributeData;index as i">
+                                                        <th >
+                                                        {{i+1}}  
+                                                        </th> 
+                                                
+                                                        <td  style="width:  19.29rem;">{{item.addr_desc}}</td>   
+                                                </tr>
+        
+        
+                                              
+                                        </tbody>
+                                </table>
+                </div>
+       
+        <div class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="activeModal.close(data);"
+                                [disabled]="fenpei ? false : true"
+                                type="button">确定
+                        </button>
+        </div>
+</div>
+
+<!-- 分配用户站 -->
+<div *ngIf="type === '19-8'">
+                <div style="margin-bottom: 1rem">   
+                        <span style="width: 74px;display: inline-block;">
+                                用户站名称
+                        </span>
+        
+                        <smx-input
+                                [smxPlaceholder]="'请输入'"
+                                [smxStyle]="{'width':'15rem'}"
+                                [(ngModel)]="userStation_think"
+                                (keyup)="InputUserStation()"
+                        ></smx-input>
+                        <!-- <button (click)="userStationclick()" style="margin-left: 10px;">点击</button> -->
+                        <div class="downPull" (click)="userStationclick()"></div>
+                </div>
+                <div class="grid-box">
+                        <table class="table table-bordered table-hover">
+                                <tbody  style="height: 11.8rem">
+                                        <tr >
+                                                <th> 
+                                                        序号         
+                                                </th> 
+                                                <td style="width:  19.29rem;font-weight: bolder;">地址描述</td>  
+                                        </tr>
+                                        <tr *ngFor="let item of data.distributeData;index as i">
+                                                <th >
+                                                {{i+1}}  
+                                                </th> 
+                                        
+                                                <td  style="width:  19.29rem;">{{item.addr_desc}}</td>   
+                                        </tr>
+
+
+                                        
+                                </tbody>
+                        </table>
+                </div>
+       
+        <div class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="activeModal.close(data);"
+                                [disabled]="fenpei ? false : true"
+                                type="button">确定
+                        </button>
+        </div>
+</div>
+<!-- 地址更新  添加单个门址 -->
+<div *ngIf = "type.addresTwo === '26-1'">
+        <div style="width: 100%;height:30rem">
+                <div style="margin-top: 5px">
+                        <label style="color: crimson;position: relative;left: 2.56rem;">*</label>
+                        <span style="display: inline-block;text-align: -webkit-right;width: 112px;position: relative;right: 6px;">门牌号描述</span>
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '14px'}"
+                                [(ngModel)]='radio.gate_desc'
+                                [smxPlaceholder]="' '"
+                                (change)= "gateDesc()"
+                        ></smx-input>
+                </div>
+                <div style="margin-top: 5px">
+                        <span style="display: inline-block;text-align: -webkit-right;width: 112px;">端口数</span>
+                        <smx-input-number
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [(ngModel)]='radio.port_count'
+                                [smxPlaceholder]="' '"
+                        ></smx-input-number>
+                </div>
+                <div style="margin-top: 5px">
+                        <span style="display: inline-block;text-align: -webkit-right;width: 112px;position: relative;bottom: 5.5rem">空间位置信息</span>
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [smxMode]="'textarea'"
+                                [(ngModel)]='radio.position_info'
+                                [smxPlaceholder]="' '"
+                        ></smx-input>
+                </div>
+               <!--  <div style="margin-top: 5px">
+                        <span style="display: inline-block;text-align: -webkit-right;width: 112px;">是否已使用</span>
+                        <smx-select
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [smxPlaceholder]="''"
+                                [smxHeight]="25"
+                                [smxToNumber]=true
+                                [options]='add_is_used'
+                                [(ngModel)]='radio.is_used'
+                                style="display: inline-block;height: 1.9rem;"
+                        ></smx-select>
+                </div> -->
+        </div>
+        <div style="position: relative;bottom: 19rem" class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="activeModal.close(radio);"
+                                [disabled]="addr_isEdit ? true : false"
+                                type="button">确定
+                        </button>
+        </div>
+</div>
+<!-- 地址更新  批量添加门址 -->
+<div *ngIf = "type.addresTwo === '26-2'">
+        <div style="width: 100%;height:30rem;position: relative;left: 11rem;">
+                <div style="margin-top: 5px">
+                        <span style="display: inline-block;text-align: -webkit-right;width: 112px;">首描述</span>
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [(ngModel)]='radio.first_desc'
+                                [smxPlaceholder]="' '"
+                                (change)="gates()"
+                        ></smx-input>
+                </div>
+                <div style="margin-top: 5px">
+                        <span style="display: inline-block;text-align: -webkit-right;width: 112px;">起始单元</span>
+                        <smx-input-number
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [(ngModel)]='radio.first_num'
+                                [smxPlaceholder]="' '"
+                                (change)="gates()"
+                        ></smx-input-number>
+                </div>
+                <div style="margin-top: 5px">
+                        <span style="display: inline-block;text-align: -webkit-right;width: 112px;">结束单元</span>
+                        <smx-input-number
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [(ngModel)]='radio.end_num'
+                                [smxPlaceholder]="' '"
+                                (change)="gates()"
+                        ></smx-input-number>
+                </div>
+                <div style="margin-top: 5px">
+                        <span style="display: inline-block;text-align: -webkit-right;width: 112px;">中间链接字符</span>
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [(ngModel)]='radio.mid_link'
+                                [smxPlaceholder]="' '"
+                                (change)="gates()"
+                        ></smx-input>
+                </div>
+                <div style="margin-top: 5px">
+                        <span style="display: inline-block;text-align: -webkit-right;width: 112px;">单元层数</span>
+                        <smx-input-number
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [(ngModel)]='radio.Layer_num'
+                                [smxPlaceholder]="' '"
+                                (change)="gates()"
+                        ></smx-input-number>
+                </div>
+                <div style="margin-top: -1.8rem;margin-left: 26rem">
+                                <span style="display: inline-block;text-align: -webkit-right;width: 112px;">层数前加0</span>
+                                <!-- <smx-input-number
+                                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                        [(ngModel)]='radio.Layer_num'
+                                        [smxPlaceholder]="' '"
+                                        (change)="gates()"
+                                ></smx-input-number> -->
+                                <input (click)="layerisHaveZero()" [checked]="layerIsZero" class="smx-radio" type="radio" name="name5" value="5"> 
+                        </div>
+                <div style="margin-top: 5px">
+                        <span style="display: inline-block;text-align: -webkit-right;width: 112px;">房间个数</span>
+                        <smx-input-number
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [(ngModel)]='radio.room_num'
+                                [smxPlaceholder]="' '"
+                                (change)="gates()"
+                                
+                        ></smx-input-number>
+                </div>
+                <div style="position: relative;left: 3rem;">
+                        <label style="color: red">例：输入[单元,1,1,-,1,2],门址描述为：单元1-101,单元1-102</label>
+                        <button (click)="previewGates()" class="smx-addresUpdata-button" >预览批量门址</button>
+                </div>
+        </div>
+        <div *ngIf="ispreviewTbale" [ngClass]="{'smx-preview-table':!tableStyle,'smx-preview-table-more':tableStyle}">
+   
+                <table border="1">
+                        <tr>
+                                <td align="center" style="width: 200px">门牌号描述</td>
+                                <td align="center" style="width: 200px">端口数</td>
+                                <td align="center" style="width: 200px">空间位置信息</td>
+                              <!--   <td align="center" style="width: 90px">是否已使用</td> -->
+                        </tr>
+                </table>
+                <div style="height: 10rem;width: 43.1rem;overflow-x: hidden;overflow-y: auto">
+                        <table border="1">
+                                        <tr *ngFor = "let item of gatesArray ; index as i">
+                                                <td align="center" style="width: 200px;">{{item.gate_desc}}</td>
+                                                <td style="width: 200px">
+                                                        <smx-input-number
+                                                                [(ngModel)]='gatesArray[i].port_count' 
+                                                                [smxStyle]="{'width':'14rem'}"
+                                                                [smxPlaceholder]="' '"
+                                                        ></smx-input-number>
+                                                </td>
+                                                <td style="width: 200px">
+                                                        <smx-input 
+                                                                [(ngModel)]='gatesArray[i].position_info'
+                                                                [smxStyle]="{'width':'14rem'}"
+                                                                [smxPlaceholder]="' '"
+                                                        ></smx-input>
+                                                </td>
+                                             <!--    <td align="center" style="width: 90px">{{item.is_useds}}</td> -->
+                                        </tr>
+                        </table>
+                </div>
+    
+        </div>
+        <div style="position: relative;bottom: 15rem" class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="activeModal.close(radio);"
+                                type="button"
+                                [disabled]="moreaddr_isEdit ? true : false"
+                                >确定
+                        </button>
+        </div>
+</div>
+
+
+<!-- 门址修改 -->
+<div *ngIf="type === '19-9'">
+        <div>
+                <span style="display: inline-block;text-align: -webkit-left;width: 11rem;">批量修改单元门址信息:</span>
+                <smx-input-number
+                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                [(ngModel)] = "portNum"
+                [smxPlaceholder]="' '"
+                (change)="onlyNumber($event)">
+                </smx-input-number> 
+                <button  type="button" class="smx-btn smx-outline-default" style="width: 140px;height: 26px;border-radius: 3px;border: 0;margin-left: 5px;line-height: 2px"
+                (click)="batchUpdate()"
+                >批量修改端口数</button>
+        </div>
+
+
+        <div class="doorsUpdate">
+                <div style=" padding: 5px 0 5px 0;">
+                        <span style=" display: inline-block;text-align: -webkit-right;width: 11rem;">编号：</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [(ngModel)]='allDoorData.address_id'
+                        [smxPlaceholder]="' '"></smx-input>
+                </div>
+                <div style=" padding: 5px 0 5px 0;">
+                        <span style=" display: inline-block;text-align: -webkit-right;width: 11rem;">地址原描述：</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [(ngModel)]='allDoorData.addr_desc'
+                        [smxPlaceholder]="' '"></smx-input>
+                </div>
+                <div style=" padding: 5px 0 5px 0;">
+                        <span style=" display: inline-block;text-align: -webkit-right;width: 11rem;">建筑形式：</span>
+                        <smx-select
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [smxPlaceholder]="''"
+                                [smxHeight]="25"
+                                [options]='addarch_form'
+                                [(ngModel)]='allDoorData.arch_form'
+                                [smxToNumber]=true
+                                [smxDisabled]=true
+                                style="display: inline-block;height: 1.9rem;"
+                        ></smx-select>
+                </div>
+                <!-- <div style=" padding: 5px 0 5px 0;">
+                        <span style=" display: inline-block;text-align: -webkit-right;width: 11rem;">日期：</span>
+                        <smx-input
+                                [smxDisabled]=true
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [smxPlaceholder]="' '"
+                        ></smx-input>
+                </div> -->
+                <div style=" padding: 5px 0 5px 0;">
+                        <span style=" display: inline-block;text-align: -webkit-right;width: 11rem;">行政区划：</span> 
+                        <smx-select
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [smxPlaceholder]="''"
+                                [smxHeight]="25"
+                                [smxToNumber]=true
+                                [options]='selectDataAdmin'
+                                [(ngModel)]="gatesAdminDesc.admin_area_id"
+                                (change)="addresChange()"
+                                style="display: inline-block;height: 1.9rem;"
+                        ></smx-select>
+                </div>
+                <div style=" padding: 5px 0 5px 0;">
+                        <span style=" display: inline-block;text-align: -webkit-right;width: 11rem;">地址新描述：</span>
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [smxPlaceholder]="' '"
+                                [(ngModel)]="gatesAdminDesc.addr_desc"
+                                (keyup)="getAddresId($event)"
+                        ></smx-input>
+                        <button  type="button" class="smx-btn smx-outline-default" style="width: 140px;height: 26px;border-radius: 3px;border: 0;margin-left: 5px;line-height: 2px"
+                        [disabled]="is_no_gatesUpdate && is_no_gatesAmdin && is_no_gatesAddres ? false: true"
+                        (click)="removeInDatesure()"
+                        title="选择和填写正确的行政区划、地址新描述"
+                        >确定转移</button>
+                </div>
+                <div style=" padding: 5px 0 5px 0;">
+                        <button type="button"  class="smx-btn smx-outline-default"
+                                style="margin-left: 1rem"
+                                (click)="delDoorData()"
+                                [disabled]="delBtn"
+                                >删除
+                        </button> 
+                        <!-- [disabled]="btnDisabled.del ? false: true" -->
+                </div>
+
+                <div class="grid" style="height:20rem">
+                <div class="grid-box-header">
+                        <table class="table table-bordered table-hover">
+                        <thead>
+                                <tr>
+                                <th style="width:4.36rem">
+                                        <input type="checkbox" class="smx-checkbox" (change)="checkAll($event)"  [(ngModel)]="isAllChecked"
+                                        >
+                                        <span style="display: inline-block;position: relative;top: 0.21rem;color: #9c9c9c">
+                                                全选</span>
+                                </th>
+                                 <th *ngFor="let item of gridHeader; index as i;" >
+                                        <span>{{item.name}}</span>
+                                </th>
+                               
+                                </tr>
+                        </thead>
+                        </table>
+                </div>
+                
+                <div class="grid-box">
+                        <table class="table table-bordered table-hover">
+                        <tbody style="height: 16rem">
+                            <tr *ngFor="let item of gatesUpdate; index as i">
+                                <th scope="row" class="check-tbody" style="width:4.36rem;">
+                                        <input type="checkbox"  class="smx-checkbox"
+                                                (change)="checkItem(i, $event, item)"
+                                                [(ngModel)]="this.gatesUpdate[i].checked">                   
+                                </th> 
+                                <td *ngFor="let itemHeader of gridHeader; index as i">
+                                        <ng-container>
+                                        <span *ngIf = "itemHeader.id !=='operation' " >{{item[itemHeader.id]}}</span>
+                                        <span *ngIf = "itemHeader.id ==='operation'" style="text-align: -webkit-center;">
+                                        <div (click)="unitDoorInfo(item)" class="editor" title="编辑"></div>
+                                        </span>
+                                        </ng-container>
+                                </td>    
+                                </tr>
+       
+                        </tbody>
+                        </table>
+                </div>
+                </div>
+
+
+        </div>
+</div>
+
+<!-- 地址详情 -->
+<div *ngIf="type === '19-10'" style="overflow: scroll;height: 42rem;">
+        <div class="addressInfo">
+                <span>地址基本信息</span>
+                <div>
+                        <span >行政区划</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.admin_area_name"
+                        ></smx-input>
+                </div>
+                <div>
+                        <span>业务管理区划</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.canton_name"
+                        ></smx-input>
+                </div>
+                <div>
+                        <span>建筑形式</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.arch_form"
+                        ></smx-input>
+                </div>
+                <div>
+                        <span>地址关键字</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.addr_key"
+                        ></smx-input>
+                </div>
+                <div>
+                        <span>地址描述</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.addr_desc"
+                        ></smx-input>
+                </div>
+                <div>
+                        <span>灵图描述</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.lt_addr_all"
+                        ></smx-input>
+                </div>
+                <div>
+                        <span>经度</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"></smx-input>
+                </div>
+                <div>
+                        <span>纬度</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"></smx-input>
+                </div>
+                <div>
+                        <span>用户站</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.user_station_name"
+                        ></smx-input>
+                </div>
+        </div>
+
+        <div class="streetInfo">
+                        <span>街道基本信息</span>
+                <div>             
+                        <span>街道名称</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.street_name"
+                        ></smx-input>
+                </div>
+                <div>
+                        
+                        <span>街道办公地点</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.office_addr"
+                        ></smx-input>
+                </div>
+                <div>
+                
+                        <span>联系人</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.link_man"
+                        ></smx-input>
+                </div>
+                <div>
+                        
+                        <span>电话</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.tel"
+                        ></smx-input>
+                </div>
+        </div>
+
+        <div class="pqInfo">
+                        <span>片区基本信息</span>
+                <div>
+                        
+                        <span>片区名称</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.slip_community_name"
+                        ></smx-input>
+                </div>
+                <div>
+                
+                        <span>联系人</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.slip_link_man"
+                        ></smx-input>
+                </div>
+                <div>
+                        
+                        <span>电话</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.slip_tel"
+                        ></smx-input>
+                </div>
+        </div>
+
+        <div class="xqInfo">
+                        <span>小区基本信息</span>
+                <div>
+                        
+                        <span>小区名称</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.resi_name"
+                        ></smx-input>
+                </div>
+                <div>
+                
+                        <span>联系人</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.resi_link_man"></smx-input>
+                        <!-- [(ngModel)]="AddressDetails.resi_" -->
+                </div>
+                <div>
+                        
+                        <span>电话</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.resi_tel"></smx-input>
+                </div>
+        </div>
+
+        <div class="sqInfo">
+                        <span>社区基本信息</span>
+                <div>
+                        
+                        <span>社区名称</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.community_name"></smx-input>
+                </div>
+                <div>
+                
+                        <span>联系人</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.commu_link_man"></smx-input>
+                </div>
+                <div>
+                        
+                        <span>电话</span>
+                        <smx-input
+                        [smxDisabled]=true
+                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                        [smxPlaceholder]="' '"
+                        [(ngModel)]="AddressDetails.commu_tel"></smx-input>
+                </div>
+        </div>
+
+        <div class="doorInfo">
+                <div>门址信息</div>
+                <div *ngFor="let item of AddressDetails.gates" style="display: inline-block;width: 200px;text-align: center;">
+                        <a style="text-decoration: underline;color: #007bff" (click)="unitDoor(item.gate_site_id)">{{item.gate_desc}}</a>
+                </div>
+                
+        </div>
+</div>
+
+<!-- 单元门址信息 -->
+<div *ngIf="type === '19-11'">
+        <div class="unitDoor">
+                <div>                
+                        <span>门牌号描述</span>
+                        <smx-input
+                                [smxDisabled]=true
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [smxPlaceholder]="' '"
+                                [(ngModel)]="data.gate_desc"
+                        ></smx-input>
+                </div>
+                <div>
+                
+                        <span>端口数</span>
+                        <smx-input
+                                [smxDisabled]=true
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [smxPlaceholder]="' '"
+                                [(ngModel)]="data.port_count"
+                        ></smx-input>
+                </div>
+                <div>
+                        <span style="position: relative;bottom: 5.5rem">空间位置信息</span>
+                        <smx-input
+                                [smxDisabled]=true
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [smxMode]="'textarea'"
+                                [smxPlaceholder]="' '"
+                                [(ngModel)]="data.position_info"
+                        ></smx-input>
+                </div>
+                <!-- <div>
+                        
+                        <span>是否使用</span>
+                        <smx-input
+                                [smxDisabled]=true
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [smxPlaceholder]="' '"
+                                [(ngModel)]="data.is_used"
+                        ></smx-input>
+                </div> -->
+        </div>
+</div>
+
+<!-- 单元门址信息修改 -->
+<div *ngIf="type === '19-12'">
+                <div class="unitDoor">
+                        <div>          
+                                   
+                                <span>
+                                        <label style="color: red">*</label>   
+                                        门牌号描述
+                                </span>
+                               <!--  [(ngModel)] = "data" -->
+                                <smx-input
+                                        [(ngModel)] = "data.unitdata.gate_desc"
+                                        [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                        (change)="ishave($event)"
+                                        [smxPlaceholder]="' '"
+                                ></smx-input>
+                        </div>
+                        <div>
+                        
+                                <span>端口数</span>
+                                <smx-input-number
+                                [(ngModel)] = "data.unitdata.port_count"
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [smxPlaceholder]="' '"></smx-input-number>
+                        </div>
+                        <div>
+                                <span style="position: relative;bottom: 5.5rem">空间位置信息</span>
+                                <smx-input
+                                [(ngModel)] = "data.unitdata.position_info"
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [smxMode]="'textarea'"
+                                [smxPlaceholder]="' '"
+                        ></smx-input>
+                        </div>
+                        <!-- <div>
+                                
+                                <span>是否使用</span>
+                                <smx-select
+                                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                                [smxPlaceholder]="''"
+                                [smxHeight]="25"
+                                [options]='door_is_used'
+                                [(ngModel)]="data.unitdata.is_used"
+                                [smxToNumber]=true                         
+                                style="display: inline-block;height: 1.9rem;"
+                        ></smx-select>
+                        </div> -->
+
+                        <div  class="smx-modal-footer">
+                                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                        取消
+                                </button>
+                                <button class="smx-btn smx-default smx-grid" 
+                                        (click)="activeModal.close(data);"
+                                        [disabled]="isHave ? true : false"
+                                        type="button">确定
+                                </button>
+                        </div>
+                </div>
+
+</div>
+
+<!-- 地图打点 -->
+<div *ngIf="type === 30">
+        <div>
+                <span>地址描述</span>    
+                <smx-input
+                [smxDisabled]=true
+                [smxStyle]="{'width':'15rem','margin-left': '20px'}"
+                [smxPlaceholder]="' '"
+                [(ngModel)]="data.desc"></smx-input>
+        </div>
+
+        <div>      
+                <div style="margin-top: 0.71rem;text-align: center">
+                       <!--  <span>地址描述：{{data.desc}}</span> -->
+                        <span>
+                                确定要保存当前标注吗？
+                        </span>
+                </div>
+        </div>
+        <div class="smx-modal-footer">
+                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                        取消
+                </button>
+                <button class="smx-btn smx-default smx-grid" 
+                        (click)="activeModal.close(data)"
+                        type="button">确定
+                </button>
+        </div> 
+</div>
+
+
+    <div *ngIf = "type.del === '-1'">
+        <div style="margin-top: 0.71rem;text-align: center">
+                <span>
+                        确定要删除这条数据吗?
+                </span>
+        </div>
+        <div class="smx-modal-footer">
+                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                  取消
+                </button>
+                <button class="smx-btn smx-default smx-grid" 
+                        (click)="activeModal.close(data)"
+                        type="button">确定
+                </button>
+        </div> 
+    </div>
+    <div *ngIf = "type.del === '-2'">
+        <div style="margin-top: 0.71rem;text-align: center">
+                <span>
+                        确定要进行转移门址吗?
+                </span>
+        </div>
+        <div class="smx-modal-footer">
+                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                  取消
+                </button>
+                <button class="smx-btn smx-default smx-grid" 
+                        (click)="activeModal.close(data)"
+                        type="button">确定
+                </button>
+        </div> 
+    </div>
+
+    <div *ngIf = "type.del === '-3'">
+        <div style="margin-top: 0.71rem;text-align: center">
+                <span>
+                        确定要删除所选门址吗?
+                </span>
+        </div>
+        <div class="smx-modal-footer">
+                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                  取消
+                </button>
+                <button class="smx-btn smx-default smx-grid" 
+                        (click)="activeModal.close()"
+                        type="button">确定
+                </button>
+        </div> 
+    </div>
+    <!-- 联想输入框 -->
+    <div *ngIf="think_isHave" class="smx-gh-thinkspan">
+        <div *ngIf = "all_data" class="smx-gh-thinktable">
+                <table>
+                <tr *ngFor = "let item of thinkData; index as i" style="cursor: pointer;">
+                        <td>
+                        <span  (click)="thinkclick(item)" style="position: relative;left: 0.36rem;">{{item.name}}</span>
+                        </td>
+                </tr>
+                </table>
+        </div>
+        <div *ngIf = "selectUser_data" class="smx-gh-thinktable">
+                        <table>
+                        <tr *ngFor = "let item of thinkDatauser; index as i" style="cursor: pointer;">
+                                <td>
+                                <span  (click)="thinkclick(item)" style="position: relative;left: 0.36rem;">{{item.name}}</span>
+                                </td>
+                        </tr>
+                        </table>
+                </div>
+    </div>
+    <!-- 地址更新添加修改 联想 小区社区 -->
+    <div>
+        <div *ngIf="addrthink_isHave && type.two === '19-2' " class="smx-gh-thinkspan-addr smx-gh-thinkspan">
+          <div class="smx-gh-thinktable">
+                <table>
+                <tr *ngFor = "let item of thinkData; index as i" style="cursor: pointer;">
+                        <td>
+                                <span  (click)="thinkclick_addrcom(item)" style="position: relative;left: 0.36rem;">{{item.name}}</span>
+                        </td>
+                </tr>
+                </table>
+          </div>
+        </div>
+   </div>
+   <div>
+        <div *ngIf="addrthink_isHave_res && type.two === '19-2' " class="smx-gh-thinkspan-addrs smx-gh-thinkspan">
+          <div class="smx-gh-thinktable">
+                <table>
+                <tr *ngFor = "let item of thinkData; index as i" style="cursor: pointer;">
+                        <td>
+                                <span  (click)="thinkclick_addrres(item)" style="position: relative;left: 0.36rem;">{{item.name}}</span>
+                        </td>
+                </tr>
+                </table>
+          </div>
+        </div>
+   </div>
+
+
+
+
+
+   <!-- -------------------------------------------第三模块 -->
+   <!-- 分公司列表 -->
+   <div *ngIf="type.two === '31-2'">
+                <div style="width: 100%;height:30rem">
+                <div>
+                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">分公司编码</span>
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]='data.company_no'
+                                [smxMaxlength]="5"
+                                (change)="maincompany('company_no')"
+                        ></smx-input>
+                        <label style="color: crimson;position: relative;left: 24.4rem;bottom: 1.6rem">(1-5个字符)</label>
+                </div>
+                <div style="margin-top: 0.5rem;position: relative;right: 0.4rem;bottom: 2rem">
+                        <label style="color: crimson;position: relative;left: 2.9rem;">*</label>
+                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">分公司名称</span> 
+                        <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]='data.company_name'
+                                (change)="maincompany('company_name')"
+                        ></smx-input>
+                </div>
+                <div style=" padding: 5px 0 5px 0;position: relative;right: 3rem;bottom: 2rem">
+                                <span style=" display: inline-block;text-align: -webkit-right;width: 11rem;">是否是总公司</span> 
+                                <smx-select
+                                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                        [smxPlaceholder]="''"
+                                        [smxHeight]="25"
+                                        [smxToNumber]=true
+                                        [options]='is_main_compang'
+                                        [(ngModel)]="data.is_main_company"
+                                        style="display: inline-block;height: 1.9rem;"
+                                ></smx-select>
+                </div>
+                
+                
+                <label style="top: 0.5rem;"  class="smx-gh-biaozhu">
+                                注:(带符号*为必填项)
+                </label>
+                </div>
+                <div style="position: relative;bottom: 19rem" class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                        取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="activeModal.close(data)"
+                                 [disabled]="isEdit ? true : false"
+                                type="button">确定
+                        </button>
+                </div>
+        </div>
+   <!-- 操作员与用户站管理 -->
+  
+   <div *ngIf="type === 20">
+        <div>
+                <span>操作员名称列表</span>
+                <smx-select
+                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                        [smxPlaceholder]="' '"
+                        [smxHeight]="25" 
+                        [options]="opertionUser"          
+                        style="display: inline-block;height: 1.9rem;"
+                        (onChange)="getUserStation($event)"
+                ></smx-select>
+        </div>
+        <div>
+                <nz-transfer
+                [nzTitles]="['未有的用户站', '已有的用户站']"
+                [nzDataSource]="List"
+                [nzListStyle]="{'width.px':370, 'height.px': 350 }"
+                (nzSelectChange)="select($event)"
+                (nzChange)="change($event)"
+                ></nz-transfer>
+        </div>
+        <div class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                          取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="submitOpertionUser()"
+                                type="button">确定
+                        </button>
+        </div>
+  </div>
+
+     <!-- 角色和用户站管理 -->
+     <div *ngIf="type === 21">
+                <div>
+                        <span>角色员名称列表</span>
+                        <smx-select
+                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                        [smxPlaceholder]="' '"
+                        [smxHeight]="25"
+                        [options]="roleList"
+                        [smxToNumber]=true
+                        (change)="getUserStation($event)"
+                        style="display: inline-block;height: 1.9rem;"
+                ></smx-select>
+                </div>
+                <div>
+                        <nz-transfer
+                        [nzTitles]="['未有的模块', '已有的模块']"
+                        [(nzDataSource)]="List"
+                        [nzListStyle]="{'width.px':370, 'height.px': 337 }"
+                        (nzSelectChange)="select($event)"
+                        (nzChange)="change($event)"
+                        ></nz-transfer>
+                </div>
+                <div class="smx-modal-footer">
+                                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                  取消
+                                </button>
+                                <button class="smx-btn smx-default smx-grid" 
+                                        (click)="submitRoleModule()"
+                                        type="button">确定
+                                </button>
+                </div>
+        </div>
+
+           <!-- 分公司和用户站 -->
+   <div *ngIf="type === 22">
+                <div>
+                        <span>公司名称列表</span>
+                        <smx-select
+                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                        [smxPlaceholder]="' '"
+                        [smxHeight]="25"           
+                        [smxToNumber]=true
+                        [options]="branchOffice"
+                        (change)="getUserStation($event)"
+                        style="display: inline-block;height: 1.9rem;"
+                ></smx-select>
+                </div>
+                <div>
+                        <nz-transfer
+                        [nzTitles]="['未有的用户站', '已有的用户站']"
+                        [(nzDataSource)]="List"
+                        [nzListStyle]="{'width.px':370, 'height.px': 337 }"
+                        (nzSelectChange)="select($event)"
+                        (nzChange)="change($event)"
+                        ></nz-transfer>
+                </div>
+                <div class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="submitComUser()"
+                                type="button">确定
+                        </button>
+                </div>
+   </div>
+
+   <!-- 用户站管理 -->
+   <div *ngIf="type.two === '29-2'">
+                <div style="width: 100%;height:10rem">
+                                <div>
+                                        <label style="color: crimson;position: relative;left: 2.71rem;">*</label>
+                                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">用户站编号</span>
+                                        <smx-input
+                                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                                [smxPlaceholder]="'请输入'"
+                                                [(ngModel)]="data.user_station_no"
+                                                (change)="userStationcom()"
+                                        ></smx-input>
+                                </div>
+                                <div style="margin-top: 0.36rem">
+                                        <label style="color: crimson;position: relative;left: 2.71rem;">*</label>
+                                        <span style="display: inline-block;width: 8rem;text-align: -webkit-right;">用户站名称</span>
+                                        <smx-input
+                                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                                [smxPlaceholder]="'请输入'"
+                                                [(ngModel)]="data.user_station_name"
+                                                (change)="userStationcom()"
+                                        ></smx-input>
+                                </div>
+        
+                                <div style="margin-top: 1.07rem">
+                                        <label style="color: crimson;position: relative;left: 2.71rem;">*</label>
+                                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">分公司名称</span> 
+                                        <smx-select
+                                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                                [smxPlaceholder]="''"
+                                                [smxHeight]="25"
+                                                [options]='companyArray'
+                                                [(ngModel)]="data.company_id"
+                                                style="display: inline-block;height: 1.9rem;" 
+                                                (change)="userStationcoms()"   
+                                                [smxToNumber]=true
+                                        ></smx-select>
+                                </div>
+                                <label style="top: 0.3rem;"  class="smx-gh-biaozhu">
+                                                注:(带符号*为必填项)
+                                </label>
+                                </div>
+                                <div class="smx-modal-footer">
+                                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                        取消
+                                        </button>
+                                        <button class="smx-btn smx-default smx-grid" 
+                                                (click)="activeModal.close(data);"
+                                                [disabled]="user_station_com  && user_station ? false: true"
+                                                type="button">确定
+                                        </button>
+                                </div>
+   </div>
+
+     <!-- 角色维护 添加 -->
+<div *ngIf="type.two === '27-2'">
+        <div style="width: 100%;height:11rem">
+                        <div>
+                                <label style="color: crimson;position: relative;left: 3rem;">*</label>
+                                <span style="display: inline-block;text-align: -webkit-right;width: 7.53rem;">角色名称</span>
+                                <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]="data.role_name"
+                                (change)="res_resliceChange('role')"
+                                ></smx-input>
+                        </div>
+                        <div style="margin-top: 0.36rem">
+                               
+                                <span style="display: inline-block;width: 8rem;text-align: -webkit-right;top: -77px;
+                                position: relative;">角色描述</span>
+                                <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [smxMode]="'textarea'"
+                                [(ngModel)]="data.role_desc"
+                                ></smx-input>
+                        </div>
+
+                        <label style="top: 0.3rem;"  class="smx-gh-biaozhu">
+                                        注:(带符号*为必填项)
+                        </label>
+                        </div>
+                        <div class="smx-modal-footer">
+                                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                取消
+                                </button>
+                                <button class="smx-btn smx-default smx-grid" 
+                                        (click)="activeModal.close(data);"
+                                        [disabled]="rescom_type ? false: true"
+                                        type="button">确定
+                                </button>
+                        </div>
+</div>
+
+<!-- 角色维护 编辑 -->
+<div *ngIf="type.two === '27-3'">
+        <div style="width: 100%;height:13rem">
+                        <div>
+                                <label style="color: crimson;position: relative;left: 5rem;">*</label>
+                                <span style="display: inline-block;text-align: -webkit-right;width: 7.53rem;">编号</span>
+                                <smx-input-number
+                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]="data.role_id"
+                                [smxDisabled]=true
+                                ></smx-input-number>
+                        </div>
+                        <div>
+                                <label style="color: crimson;position: relative;left: 3rem;">*</label>
+                                <span style="display: inline-block;text-align: -webkit-right;width: 7.53rem;">角色名称</span>
+                                <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                [smxPlaceholder]="'请输入'"
+                                [(ngModel)]="data.role_name"
+                                (change)="res_resliceChange('role')"
+                                ></smx-input>
+                        </div>
+                        <div style="margin-top: 0.36rem">
+                                
+                                <span style="display: inline-block;width: 8rem;text-align: -webkit-right;top: -77px;
+                                position: relative;">角色描述</span>
+                                <smx-input
+                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                [smxPlaceholder]="''"
+                                [smxMode]="'textarea'"
+                                [(ngModel)]="data.role_desc"
+                                ></smx-input>
+                        </div>
+
+                        <label style="top: 0.3rem;"  class="smx-gh-biaozhu">
+                                        注:(带符号*为必填项)
+                        </label>
+                        </div>
+                        <div class="smx-modal-footer">
+                                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                取消
+                                </button>
+                                <button class="smx-btn smx-default smx-grid" 
+                                        (click)="activeModal.close(data);"
+                                        [disabled]="rescom_type ? false: true"
+                                        type="button">确定
+                                </button>
+                        </div>
+</div>
+
+<!-- 操作员维护 -->
+<div *ngIf="type.two === '32-2'">
+                <div style="width: 100%; height: 30rem;">
+                                <div>
+                                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">登录名</span>
+                                        <smx-input
+                                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                                [smxPlaceholder]="' '"
+                                                [smxMaxlength]="32"
+                                                [smxDisabled]=true
+                                        ></smx-input>
+                                        <label style="color: red;margin-left: 10px;">(长度1-32)</label>
+                                </div>
+                                <div>
+                                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">操作员姓名</span>
+                                        <smx-input
+                                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                                [smxPlaceholder]="'请输入'"
+                                                [smxMaxlength]="32"
+                                        ></smx-input>
+                                        <label style="color: red;margin-left: 10px;">(长度1-32)</label>
+                                </div> 
+                                <div>
+                                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">登录密码</span>
+                                        <input type="password" class="form-control form-control-lg input-item" style="width: 15rem;height: 26px;display: inline-block;margin-left: 1rem;border-radius: 2px;"  
+                                                maxlength="32"  disabled= true>
+                                        <label style="color: red;margin-left: 10px;">(长度1-32)</label>
+                                </div>
+                                <div>
+                                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">密码确认</span>
+                                        <input type="password" class="form-control form-control-lg input-item" style="width: 15rem;height: 26px;display: inline-block;margin-left: 1rem;border-radius: 2px;"  
+                                                maxlength="32" disabled= true>
+                                        <label style="color: red;margin-left: 10px;">(长度1-32)</label>
+                                </div> 
+                                <div style="display: relative">
+                                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">登录状态</span>
+                                        <input class="smx-checkbox" style="top: -3px;display: inline-block;margin-left: 1rem;" type="checkbox">
+                                        <span>有效</span>
+                                </div>
+                                <div>
+                                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">公司名称</span>
+                                        <smx-select
+                                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                        [smxPlaceholder]="''"
+                                        [smxHeight]="25"           
+                                        [smxToNumber]=true
+                                        style="display: inline-block;height: 1.9rem;"
+                                        ></smx-select>
+                                </div> 
+                
+                                <div>
+                                        <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">角色</span>
+                                        <smx-select
+                                                [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                                [smxPlaceholder]="''"
+                                                [smxHeight]="25"           
+                                                [smxToNumber]=true
+                                                style="display: inline-block;height: 1.9rem;"
+                                        ></smx-select>
+                                </div>
+                </div>
+                       
+        
+                        <div class="smx-modal-footer">
+                                <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                        取消
+                                </button>
+                                <button class="smx-btn smx-default smx-grid" 
+                                        (click)="submitComUser()"
+                                        type="button">确定
+                                </button>
+        </div>
+</div>
+<div *ngIf="type.two === '39-2'">
+        <div style="width: 100%; height: 30rem;">
+                        <div>
+                                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">登录名</span>
+                                <smx-input
+                                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                        [smxPlaceholder]="' '"
+                                        [smxMaxlength]="32" 
+                                        [smxDisabled]=true
+                                        [(ngModel)]="data.login_name"
+                                ></smx-input>
+                                <label style="color: red;margin-left: 10px;">(长度1-32)</label>
+                        </div>
+                        <div>
+                                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">操作员姓名</span>
+                                <smx-input
+                                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                        [smxPlaceholder]="'请输入'"
+                                        [smxMaxlength]="32"
+                                        [(ngModel)]="data.username"
+                                        (change)="opertionerChange()"
+                                ></smx-input>
+                                <label style="color: red;margin-left: 10px;">(长度1-32)</label>
+                        </div> 
+                        <div>
+                                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">登录密码</span>
+                                <!-- <input type="password" class="form-control form-control-lg input-item" style="width: 15rem;height: 26px;display: inline-block;margin-left: 1rem;border-radius: 2px;"  
+                                        maxlength="32"  disabled= true> -->
+                                <smx-input
+                                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                        [smxPlaceholder]="'********'"
+                                        [smxMaxlength]="32"
+                                        [smxFormat]="password"
+                                        [smxDisabled]=true
+                                ></smx-input>
+                                <label style="color: red;margin-left: 10px;">(长度1-32)</label>
+                        </div>
+                        <div>
+                                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">密码确认</span>
+                                <!-- <input type="password" class="form-control form-control-lg input-item" style="width: 15rem;height: 26px;display: inline-block;margin-left: 1rem;border-radius: 2px;"  
+                                        maxlength="32" disabled= true> -->
+                                <smx-input
+                                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                        [smxPlaceholder]="'********'"
+                                        [smxMaxlength]="32"
+                                        [smxFormat]="password"
+                                        [smxDisabled]=true
+                                ></smx-input>
+                                <label style="color: red;margin-left: 10px;">(长度1-32)</label>
+                        </div> 
+                        <div style="display: relative">
+                                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">登录状态</span>
+                                <input 
+                                        class="smx-checkbox" 
+                                        style="top: -3px;display: inline-block;margin-left: 1rem;" 
+                                        type="checkbox"
+                                        [checked]=true
+                                >
+                                <span>有效</span>
+                        </div>
+                        <div>
+                                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">公司名称</span>
+                                <smx-select
+                                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                        [smxPlaceholder]="''"
+                                        [smxHeight]="25"           
+                                        [smxToNumber]=true
+                                        [options]='branchOffice'
+                                        [(ngModel)]="data.company_id"
+                                        style="display: inline-block;height: 1.9rem;"
+                                ></smx-select>
+                        </div> 
+        
+                        <div>
+                                <span style="display: inline-block;text-align: -webkit-right;width: 8rem;">角色</span>
+                                <smx-select
+                                        [smxStyle]="{'width':'15rem','margin-left': '1rem'}"
+                                        [smxPlaceholder]="''"
+                                        [smxHeight]="25"           
+                                        [smxToNumber]=true
+                                        [(ngModel)]="data.role_id"
+                                        [options]='roleList_oper'
+                                        style="display: inline-block;height: 1.9rem;"
+                                ></smx-select>
+
+                        </div>
+                        
+                               
+                                
+                       
+        </div>
+
+                <div class="smx-modal-footer">
+                        <button class="smx-btn smx-outline-default smx-grid" (click)="activeModal.dismiss();" type="button">
+                                取消
+                        </button>
+                        <button class="smx-btn smx-default smx-grid" 
+                                (click)="activeModal.close(data);"
+                                [disabled]="is_opertionboolean ? false: true"
+                                type="button">确定
+                        </button>
+                </div>
+                
+                       
+                        
+               
+</div>
+
+   <!-- 门址转移 地址描述联想 -->
+   <div>
+        <div *ngIf="gates_addres_desc_boolean && type === '19-9' " class="gates-desc-smx-gehua smx-gh-thinkspan">
+          <div class="smx-gh-thinktable">
+                <table>
+                <tr *ngFor = "let item of thinkData; index as i" style="cursor: pointer;">
+                        <td>
+                                <span  (click)="thinkclicks_addrres(item)" style="position: relative;left: 0.36rem;">{{item.name}}</span>
+                        </td>
+                </tr>
+                </table>
+          </div>
+        </div>
+   </div>

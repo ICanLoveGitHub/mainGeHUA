@@ -1,0 +1,415 @@
+<!-- 查询只有两个条件的情况（下拉选框-输入框） -->
+<div class="modal-first-query" *ngIf = "interface_id.interface.select.one === '6-1'">
+    <div>
+        <!-- 适用于街道维护、社区维护 、小区维护-->
+            <div style="height: 5rem ;">
+                <div style="height: 5rem;" *ngIf="interface_id.interface.select.two === '6-2'">
+                    <div>
+                        <div class="smx-gh-first-inputspan">
+                                <span>{{selectName}}:</span>
+                        </div>
+                        <div class="smx-gh-frist-input">
+                                <smx-select [smxStyle]="{'width':'15rem'}"
+                                    [smxPlaceholder]="''"
+                                    [options]="selectValue"
+                                    [smxHeight]="25"
+                                    [smxToNumber]=true
+                                    (onChange)="changeSelect($event)"
+                                ></smx-select>
+                        </div>
+                    </div>   
+                    <div class="smx-gh-fristInputDiv">
+                        <div class="smx-gh-first-inputspan">
+                            <span>{{inputName}}:</span>
+                        </div>
+                        <div class="smx-gh-frist-input">
+                            <smx-input
+                                [smxPlaceholder]="'请输入'"
+                                [smxStyle]="{'width':'15rem'}"
+                                [(ngModel)] = 'inputValue_think'
+                                (keyup)="changInputValue(inputName)"
+                            ></smx-input>
+                        </div>
+                    </div>
+                    <div style="bottom: 6.3rem" class="smx-gh-queryButton">
+                            <button class="smx-gh-frist-queryButton" (click)="query()" >查询</button>
+                    </div>
+                </div>
+                <!-- 用于片区维护 -->
+                <div style="height: 5rem;" *ngIf="interface_id.interface.select.two === '6-3'">
+                        <div>
+                                <div class="smx-gh-first-inputspan">
+                                        <span>片区名称:</span>
+                                </div>
+                                <div class="smx-gh-frist-input">
+                                    <smx-input
+                                        [smxPlaceholder]="'请输入'"
+                                        [smxStyle]="{'width':'15rem'}"
+                                        [(ngModel)] = 'inputValue_think'
+                                        (keyup)="changInputValue(inputName)"
+                                    ></smx-input>
+                                </div>
+                            </div>   
+                            <div class="smx-gh-fristInputDiv" style="bottom: 3.2rem;">
+                                <div class="smx-gh-first-inputspan">
+                                    <span>片区类型:</span>
+                                </div>
+                                <div class="smx-gh-frist-input">
+                                    <smx-select [smxStyle]="{'width':'15rem'}"
+                                        [smxPlaceholder]="''"
+                                        [options]="selectValue"
+                                        [smxHeight]="25"
+                                        [smxToNumber]=true
+                                        (onChange)="changeSelect($event)"
+                                    ></smx-select>
+                                    
+                                </div>
+                            </div> 
+                            <div style="bottom: 6.3rem" class="smx-gh-queryButton">
+                                    <button class="smx-gh-frist-queryButton" (click)="query()" >查询</button>
+                            </div>
+                </div>
+
+        </div>
+        <!-- 操作员维护 -->
+        <div class="smx-ghe-sim-Style"  *ngIf="val === false">
+            <div class="smx-gh-simStyle">
+                <span>分公司：</span>
+                <div style="display: inline-block">
+                    <smx-select [smxStyle]="{'width':'15rem'}"
+                        [smxPlaceholder]="''"
+                        [options]="selectValue"
+                        [smxHeight]="25"
+                        (onChange)="changeSelect($event)"
+                    ></smx-select>
+                </div>
+            </div>
+            <div class="smx-gh-simStyle">
+                <span>用户站：</span>
+                <div style="display: inline-block">
+                    <smx-select [smxStyle]="{'width':'15rem'}"
+                        [smxPlaceholder]="''"
+                        [options]="selectValue"
+                        [smxHeight]="25"
+                        (onChange)="changeSelect($event)"
+                    ></smx-select>
+                </div>
+            </div>
+            <div class="smx-gh-simStyle">
+                <span>操作员：</span>
+                <div style="display: inline-block">
+                    <smx-input
+                            [smxPlaceholder]="'请输入'"
+                            [smxStyle]="{'width':'15rem'}">
+                    </smx-input>
+                </div>
+            </div>
+            <div style="display: inline-block">
+                    <button class="smx-gh-frist-queryButton">查询</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 日志查询 -->
+<div class="modal-Journal-query" *ngIf="interface_id.interface.logselect">
+    <div>
+        <div class="smx-ghe-Journal-Style">
+                <div  style="display: inline-block">
+                    <span>开始日期：</span>
+                    <div style="display: inline-block">
+                            <smx-date-time-pick 
+                            [smxStyle]="{'width':'15rem'}"
+                            [(ngModel)]="log_json.start_time"
+                            [smxDisabled]="false"
+                            (onChange)="dateChangestart($event)"
+                            ></smx-date-time-pick>
+                    </div>
+                </div>
+                <div class="smx-gh-Journal-endData">
+                        <span>结束日期：</span>
+                        <div style="display: inline-block">
+                                <smx-date-time-pick 
+                                [smxStyle]="{'width':'15rem'}"
+                                [(ngModel)]="log_json.end_time"
+                                [smxDisabled]="false"
+                                (onChange)="dateChangeend($event)"
+                                ></smx-date-time-pick>
+                        </div>
+                    </div>
+                <div class="smx-ghe-Journal-Style-type">
+                    <span>操作类型：</span>
+                    <div style="display: inline-block">
+                        <smx-select [smxStyle]="{'width':'15rem'}"
+                            [smxPlaceholder]="''"
+                            [options]="logselectData"
+                            [smxHeight]="25"
+                            [smxToNumber]=true
+                            (onChange)="changeLogSelect($event)"
+                        ></smx-select>
+                    </div>
+                </div>
+                <div class="smx-ghe-Journal-Style-jconton">
+                    <span>日志内容：</span>
+                    <div style="display: inline-block">
+                        <smx-input
+                                [smxPlaceholder]="'请输入'"
+                                [smxStyle]="{'width':'15rem'}"
+                                [(ngModel)]="log_json.note"
+                        ></smx-input>
+                    </div>
+                </div>
+                <div class="smx-gh-Journal-operter">
+                        <span>操作员：</span>
+                        <div style="display: inline-block">
+                            <smx-input
+                                [smxPlaceholder]="'请输入'"
+                                [smxStyle]="{'width':'15rem'}"
+                                [(ngModel)]="log_json.operator_name"
+                            ></smx-input>
+                        </div>
+                </div>
+                <div class="smx-gh-Journal-query">
+                    <button (click)="logselectquery()" class="smx-gh-frist-queryButton">查询</button>
+                </div>
+        </div>
+
+
+    </div>        
+</div>
+<!-- 地址更新 -->
+<div class="modal-Journal-query-addupdata" *ngIf="interface_id.interface.select.one === '19-1'">
+    <div style="height: 10rem;">
+        <div class="smx-ghe-Journal-Style">
+                <div  style="display: inline-block;position: relative;right: 42px;">
+                    <span>行政管理区划：</span>
+                    <div style="display: inline-block;">
+                        <smx-select [smxStyle]="{'width':'15rem'}"
+                            [smxPlaceholder]="''"
+                            [options]="add_adminArea_query"
+                            [smxHeight]="25"
+                            [smxToNumber]=true
+                            (onChange)="changeAddQuery($event,'admin')"
+                        ></smx-select>
+                    </div>
+                </div>
+                <div class="smx-gh-Journal-endDatass">
+                    <span>街道名称：</span>
+                    <div style="display: inline-block">
+                        <smx-input
+                                [smxPlaceholder]="' '"
+                                [smxStyle]="{'width':'15rem'}"
+                                [(ngModel)]="street_name"
+                                (keyup)="addresInput('street')"
+                        ></smx-input>
+                    </div>
+                </div>
+                <div style="right: 3rem; top: -0.6rem" class="smx-ghe-Journal-Style-type">
+                    <span>业务管理区划：</span>
+                    <div style="display: inline-block">
+                        <smx-select [smxStyle]="{'width':'15rem'}"
+                            [smxPlaceholder]="''"
+                            [options]="add_canton_query"
+                            [smxHeight]="25"
+                            [smxToNumber]=true
+                            (onChange)="changeAddQuery($event,'contan')"
+                        ></smx-select>
+                    </div>
+                </div>
+                <div style="bottom: 1.2rem;" class="smx-ghe-Journal-Style-jconton">
+                     <span>用户站：</span>
+                    <div style="display: inline-block">
+                        <smx-select [smxStyle]="{'width':'15rem'}"
+                            [smxPlaceholder]="''"
+                            [options]="add_user_station_query"
+                            [smxHeight]="25"
+                            [smxToNumber]=true
+                            (onChange)="changeAddQuery($event,'user')"
+                        ></smx-select>
+                    </div>
+                </div>
+                <div class="smx-gh-addxie">
+                    <span>片区名称：</span>
+                    <div style="display: inline-block">
+                        <smx-input
+                            [smxPlaceholder]="' '"
+                            [smxStyle]="{'width':'15rem'}"
+                            [(ngModel)]="slip_community_name"
+                            (keyup)="addresInput('comname')"
+                        ></smx-input>
+                    </div>
+                </div>
+                <div style="left: -17rem;bottom: 3.8rem" class="smx-gh-Journal-operter">
+                    <span>小区名称：</span>
+                    <div style="display: inline-block">
+                        <smx-input
+                            [smxPlaceholder]="' '"
+                            [smxStyle]="{'width':'15rem'}"
+                            [(ngModel)]="resi_name"
+                            (keyup)="addresInput('resname')"
+                        ></smx-input>
+                    </div>
+                </div>
+                <div style="position: relative;right: 42px;bottom: 27px" class="smx-gh-remcom">
+                     <span>地图是否标注：</span>
+                    <div style="display: inline-block">
+                        <smx-select [smxStyle]="{'width':'15rem'}"
+                            [smxPlaceholder]="''"
+                            [options]="addres_ismark"
+                            [smxHeight]="25"
+                            [smxToNumber]=true
+                            (onChange)="changeAddQuery($event,'biaozhu')"
+                        ></smx-select>
+                    </div>
+                </div>
+                <div class="smx-gh-biaozhu">
+                   <!--  <span>是否标注：</span>
+                    <div style="display: inline-block">
+                        <smx-select [smxStyle]="{'width':'15rem'}"
+                            [smxPlaceholder]="''"
+                            [options]="addres_ismark"
+                            [smxHeight]="25"
+                            [smxToNumber]=true
+                            (onChange)="changeAddQuery($event,'biaozhu')"
+                        ></smx-select>
+                    </div> -->
+                    <span>地址描述：</span>
+                    <div style="display: inline-block">
+                        <smx-input
+                                [smxPlaceholder]="' '"
+                                [smxStyle]="{'width':'15rem'}"
+                                [(ngModel)]="addres_desc"
+                                (keyup)="addresInput('desc')"
+                                ></smx-input>
+                    </div>
+                </div>
+                <div class="smx-gh-Journal-query-add">
+                    <button (click)="query()" class="smx-gh-frist-queryButton">查询</button>
+                </div>
+        </div>
+
+
+    </div>        
+</div>
+
+
+<!-- 操作员维护 -->
+<div style="left: 0;right: 3rem;" class="modal-Journal-query" *ngIf="interface_id.interface.operatorerSelect">
+        <div style="height: 1rem;">
+            <div style="height: 1rem;" class="smx-ghe-Journal-Style">
+                    <div class="smx-ghe-Journal-Style-type">
+                        <span>分公司：</span>
+                        <div style="display: inline-block">
+                            <smx-select [smxStyle]="{'width':'15rem'}"
+                                [smxPlaceholder]="''"
+                                [options]="branchcompany"
+                                [smxHeight]="25"
+                                [smxToNumber]=true
+                                [(ngModel)]="opertor_json.company_id"
+                                
+                            ></smx-select>
+                        </div>
+                    </div>
+                    <div class="smx-ghe-Journal-Style-jconton" style="left: 20.7rem;bottom: 2.6rem">
+                        <span>用户站：</span>
+                        <div style="display: inline-block">
+                            <smx-select [smxStyle]="{'width':'15rem'}"
+                                [smxPlaceholder]="''"
+                                [options]="add_user_station_query"
+                                [smxHeight]="25"
+                                [smxToNumber]=true
+                                [(ngModel)]="opertor_json.user_station_id"
+                                
+                            ></smx-select>
+                        </div>
+                    </div>
+                    <div class="smx-gh-Journal-operter" style=" left: 22rem">
+                        <span>操作员：</span>
+                        <div style="display: inline-block">
+                            <smx-input
+                                [smxPlaceholder]="' '"
+                                [(ngModel)]="opertor_json.username"
+                                [smxStyle]="{'width':'15rem'}">
+                            </smx-input>
+                        </div>
+                    </div>
+                    <div class="smx-gh-Journal-query" style="left: 24rem;bottom: 2.5rem">
+                        <button (click)="Opertorquery()" class="smx-gh-frist-queryButton">查询</button>
+                    </div>
+            </div>
+    
+    
+        </div>        
+    </div>
+
+<!-- 联想下拉框 -->
+<div *ngIf= " !think_position && is_have_think" style="left: 14.92rem;" class="smx-gh-thinkspan">
+    <div class="smx-gh-thinktable">
+        <table>
+            <tr *ngFor = "let item of thinkData; index as i" style="cursor: pointer;">
+                <td>
+                    <span  (click)="thinkclick(item)" style="position: relative;left: 0.36rem;">{{item}}</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div *ngIf= " think_position && is_have_think" class="smx-allen-gh smx-gh-thinkspan">
+    <div class="smx-gh-thinktable">
+        <table>
+            <tr *ngFor = "let item of thinkData; index as i" style="cursor: pointer;">
+                <td>
+                    <span  (click)="thinkclick(item)" style="position: relative;left: 0.36rem;">{{item}}</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- 地址更新 查询输入框 联想UI -->
+<!-- 街道 -->
+<div *ngIf= "is_street_haveThink && interface_id.interface.select.one === '19-1'" class="street-smx-gehua smx-gh-thinkspan">
+    <div class="smx-gh-thinktable">
+        <table>
+            <tr *ngFor = "let item of thinkData; index as i" style="cursor: pointer;">
+                <td>
+                    <span  (click)="thinkclickaddrs(item)" style="position: relative;left: 0.36rem;">{{item.name}}</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- 地址描述 -->
+<div *ngIf= "is_desc_haveThink && interface_id.interface.select.one === '19-1'" class="addres-smx-gehua smx-gh-thinkspan">
+    <div class="smx-gh-thinktable">
+        <table>
+            <tr *ngFor = "let item of thinkData; index as i" style="cursor: pointer;">
+                <td>
+                    <span  (click)="thinkclickaddrs(item)" style="position: relative;left: 0.36rem;">{{item.name}}</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- 片区 -->
+<div *ngIf= "is_com_haveThink && interface_id.interface.select.one === '19-1'" class="slicom-smx-gehua smx-gh-thinkspan">
+    <div class="smx-gh-thinktable">
+        <table>
+            <tr *ngFor = "let item of thinkData; index as i" style="cursor: pointer;">
+                <td>
+                    <span  (click)="thinkclickaddrs(item)" style="position: relative;left: 0.36rem;">{{item.name}}</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- 小区 -->
+<div *ngIf= "is_res_haveThink && interface_id.interface.select.one === '19-1'" class="rescom-smx-gehua smx-gh-thinkspan">
+    <div class="smx-gh-thinktable">
+        <table>
+            <tr *ngFor = "let item of thinkData; index as i" style="cursor: pointer;">
+                <td>
+                    <span  (click)="thinkclickaddrs(item)" style="position: relative;left: 0.36rem;">{{item.name}}</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

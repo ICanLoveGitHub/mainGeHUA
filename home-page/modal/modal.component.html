@@ -1,0 +1,480 @@
+
+<!-- 业务管理区划 1，2 -->
+ <smx-drag-modal *ngIf="type === 1" [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'39rem','width':'79rem'}">
+  <div> 
+                <!-- 打开二级模态框 -->
+                <app-tablegrid
+                        [Headerdata]='data'
+                        [interface_id]='interface_id'
+                ></app-tablegrid>
+  </div>
+ </smx-drag-modal>
+
+ <smx-drag-modal *ngIf="type.one === '2-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'40rem','width':'30rem'}">
+                <content-modal
+                        [data]='data'
+                        [type]='type'
+                        [appdate]='appdate'
+                        [isEdit]='isEdit'
+                ></content-modal>
+ </smx-drag-modal>
+<!-- 行政管理区划 3，4-->
+
+<smx-drag-modal *ngIf="type === 3"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'39rem','width':'79rem'}"> 
+                
+                <!-- 打开二级模态框 -->
+                <app-tablegrid
+                        [Headerdata]='data'
+                        [interface_id]='interface_id'
+                ></app-tablegrid>
+</smx-drag-modal>
+<smx-drag-modal *ngIf="type.one === '4-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'40rem','width':'30rem'}">
+        <!--  <button (click)="third()">999</button> -->
+                <content-modal
+                        [data]='data'
+                        [type]='type'
+                        [appdate]='appdate'
+                        [isEdit]='isEdit'
+                ></content-modal>
+</smx-drag-modal>
+
+<!-- 街道维护 5，6-->
+<smx-drag-modal *ngIf="type === 5"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'47rem','width':'79rem'}"> 
+        <div style="height: 47rem;width:78rem">
+                <select-content
+                        [interface_id]='interface_id'
+                        [selectData]='selectData'
+                        (queryStreet)='change($event)'
+                ></select-content>
+                <!-- 打开二级模态框 -->
+                <app-tablegrid
+                        [queryEndData]='queryEndData'
+                        [Headerdata]='data'
+                        [selectData]='selectData'
+                        [interface_id]='interface_id'
+                ></app-tablegrid>
+        </div>
+      
+</smx-drag-modal>
+<smx-drag-modal *ngIf="type.one === '6-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'40rem','width':'30rem'}">
+       
+                <content-modal
+                        [data]='data'
+                        [type]='type'
+                        [interface_id]='interface_id'
+                        [selectData]='selectData'
+                        [appdate]='appdate'
+                        [isEdit]='isEdit'
+                ></content-modal>
+</smx-drag-modal>
+
+<!--社区维护 7，8-->
+<smx-drag-modal *ngIf="type === 7"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'47rem','width':'79rem'}"> 
+        <div style="height: 47rem;width:78rem">
+                        <select-content
+                        [interface_id]='interface_id'
+                        [selectData]='selectData'
+                        (queryStreet)='change($event)'
+                ></select-content>
+        <!-- 打开二级模态框 -->
+                <app-tablegrid
+                        [queryEndData]='queryEndData'
+                        [Headerdata]='data'
+                        [selectData]='selectData'
+                        [interface_id]='interface_id'
+                ></app-tablegrid>
+        </div>
+      
+</smx-drag-modal>
+<smx-drag-modal *ngIf="type.one === '8-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'40rem','width':'30rem'}">
+        <!--  <button (click)="third()">999</button> -->
+        <content-modal
+                [data]='data'
+                [type]='type'
+                [interface_id]='interface_id'
+                [selectData]='selectData'
+                [appdate]='appdate'
+                [isEdit]='isEdit'
+        ></content-modal>
+</smx-drag-modal>
+
+<!-- 小区维护 9，10-->
+<smx-drag-modal *ngIf="type === 9"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'47rem','width':'79rem'}"> 
+        <div style="height: 44rem;width:78rem">
+                        <select-content
+                        [interface_id]='interface_id'
+                        [selectData]='selectData'
+                        (queryStreet)='change($event)'
+                ></select-content>
+        <!-- 打开二级模态框 -->
+                <app-tablegrid
+                        [queryEndData]='queryEndData'
+                        [Headerdata]='data'
+                        [selectData]='selectData'
+                        [interface_id]='interface_id'
+                ></app-tablegrid>
+        </div>
+      
+</smx-drag-modal>
+<smx-drag-modal *ngIf="type.one === '10-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'40rem','width':'30rem'}">
+        <!--  <button (click)="third()">999</button> -->
+        <content-modal
+                [data]='data'
+                [type]='type'
+                [interface_id]='interface_id'
+                [selectData]='selectData'
+                [appdate]='appdate'
+                [isEdit]='isEdit'
+        ></content-modal>
+</smx-drag-modal>
+<!-- 片区维护 11，12-->
+<smx-drag-modal *ngIf="type === 11"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'47rem','width':'79rem'}"> 
+        <div style="height: 44rem;width:78rem">
+                <select-content
+                        [interface_id]='interface_id'
+                        [selectData]='selectData'
+                        (queryStreet)='change($event)'
+                ></select-content>
+        <!-- 打开二级模态框 -->
+                <app-tablegrid
+                        [queryEndData]='queryEndData'
+                        [Headerdata]='data'
+                        [selectData]='selectData'
+                        [interface_id]='interface_id'
+                ></app-tablegrid>
+        </div>
+</smx-drag-modal>
+<smx-drag-modal *ngIf="type.one === '12-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'40rem','width':'30rem'}">
+                <content-modal
+                        [data]='data'
+                        [type]='type'
+                        [interface_id]='interface_id'
+                        [selectData]='selectData'
+                        [appdate]='appdate'
+                        [isEdit]='isEdit'
+                ></content-modal>
+</smx-drag-modal>
+
+<!-- 删除操作提示模态框 -->
+<smx-drag-modal *ngIf="type.del === '-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'10rem','width':'30rem'}">
+                <content-modal
+                [type]='type'>         
+                </content-modal>
+</smx-drag-modal>
+<!-- 删除操作提示模态框 -->
+<smx-drag-modal *ngIf="type.del === '-2'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'10rem','width':'30rem'}">
+        <content-modal
+        [type]='type'>         
+        </content-modal>
+</smx-drag-modal>
+
+<!-- 删除操作提示模态框 -->
+<smx-drag-modal *ngIf="type.del === '-3'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'10rem','width':'30rem'}">
+        <content-modal
+        [type]='type'>         
+        </content-modal>
+</smx-drag-modal>
+
+
+<!-- 批量导入 -->
+<smx-drag-modal *ngIf="type === 13"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'15rem','width':'30rem'}">
+                <content-modal
+                [type]='type'>         
+                </content-modal>
+</smx-drag-modal>
+
+<!-- 小区类型维护 -->
+<smx-drag-modal *ngIf="type === 14"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'width':'79rem', 'height':'42rem'}">
+                <div>      
+                        <app-tablegrid
+                        [Headerdata]='data'
+                        [interface_id]='interface_id'
+                        >              
+                        </app-tablegrid>
+                </div>
+</smx-drag-modal>
+        
+<smx-drag-modal *ngIf="type.one === '15-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'14rem','width':'30rem'}">
+                <content-modal
+                        [data]='data'
+                        [type]='type'
+                        [isEdit]='isEdit'
+                ></content-modal>
+</smx-drag-modal>
+
+<!-- 片区类型维护 -->
+<smx-drag-modal *ngIf="type === 16"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'width':'79rem', 'height':'42rem'}">
+                <div>      
+                        <app-tablegrid
+                        [Headerdata]='data'
+                        [interface_id]='interface_id'
+                        >              
+                        </app-tablegrid>
+                </div>
+</smx-drag-modal>
+        
+<smx-drag-modal *ngIf="type.one === '17-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'14rem','width':'30rem'}">
+                <content-modal
+                        [data]='data'
+                        [type]='type'
+                        [isEdit]='isEdit'
+                ></content-modal>
+</smx-drag-modal>
+
+
+
+
+
+
+
+<!-- 地址更新 -->
+<smx-drag-modal *ngIf="type === 18"  [header]="title.name" [maximizable]="false" [minimizable]="true" [style]="{'height':'47rem','width':'79rem'}">
+                <select-content
+                        [interface_id]='interface_id'
+                        (queryStreet)='change($event)'
+                        ></select-content>
+                <div>      
+                        <app-tablegrid
+                        [mapObj] = "data.mapObj"
+                        [Headerdata]='data.header'
+                        [interface_id]='interface_id'
+                        (markPointObj) = "getObj($event)"
+                        [queryEndData]="queryEndData"
+                        (minWindow)="minWindow($event)"
+                        >              
+                        </app-tablegrid>
+                </div>
+
+
+</smx-drag-modal>
+
+<!-- 地址更新添加修改的页面 -->
+<smx-drag-modal *ngIf="type.one === '19-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'40rem','width':'34rem'}">
+                <content-modal
+                [data]='data'
+                [type]='type'
+                [selectData]='selectData'
+                [interface_id]='interface_id'
+                [addres_updata]='addres_updata'
+                [isEdit]='isEdit'
+                ></content-modal>
+</smx-drag-modal>
+<!-- 合并地址 19-->
+<smx-drag-modal *ngIf="type === '19-3'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'width':'40rem'}">
+                <content-modal
+                [data]='data'
+                [type]='type'>         
+                </content-modal> 
+</smx-drag-modal>
+
+<!-- 分配小区 20-->
+<smx-drag-modal *ngIf="type === '19-4'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'width':'40rem'}">
+                <content-modal
+                [data]='data'
+                [type]='type'>         
+                </content-modal>
+</smx-drag-modal>
+
+
+<!-- 分配社区 21 -->
+<smx-drag-modal *ngIf="type === '19-5'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'width':'40rem'}">
+                <content-modal
+                [data]='data'
+                [type]='type'>         
+                </content-modal>
+</smx-drag-modal>
+
+<!-- 分配片区 22 -->
+<smx-drag-modal *ngIf="type === '19-6'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'width':'40rem'}">
+                <content-modal
+                [data]='data'
+                [type]='type'>         
+                </content-modal>
+</smx-drag-modal>
+
+<!-- 分配街道 23 -->
+<smx-drag-modal *ngIf="type === '19-7'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'width':'40rem'}">
+                <content-modal
+                [data]='data'
+                [type]='type'>         
+                </content-modal>
+</smx-drag-modal>
+
+<!-- 分配管理站 24 -->
+<smx-drag-modal *ngIf="type === '19-8'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'width':'40rem'}">
+                <content-modal
+                [data]='data'
+                [type]='type'>         
+                </content-modal>
+</smx-drag-modal>
+<!-- 添加单个门址 25 -->
+<smx-drag-modal *ngIf="type.addresOne === '25-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'19rem','width':'30rem','left':'425px'}">
+                <content-modal
+                [type]='type'
+                [radio]='radio'
+                ></content-modal>
+</smx-drag-modal>
+<!-- 添加多个门址 26 -->
+<smx-drag-modal *ngIf="type.addresOne === '26-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'35rem','width':'61rem','left':'214rem','top':'76px'}">
+                <content-modal
+                [type]='type'
+                [radio]='radio'
+                ></content-modal>
+</smx-drag-modal>
+
+<!-- 门址修改 -->
+<smx-drag-modal *ngIf="type === '19-9'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'45rem','width':'61rem'}">
+                <content-modal
+                [type]='type'
+                [data]='data'
+                ></content-modal>
+</smx-drag-modal>
+
+
+<!-- 地址详情 -->
+<smx-drag-modal *ngIf="type === '19-10'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'45rem','width':'61rem'}">
+        <content-modal
+        [type]='type'
+        [data]='data'
+        [addresGat]='addresGat'
+        ></content-modal>
+</smx-drag-modal>
+
+<!-- 单元门址详情页面 -->
+<smx-drag-modal *ngIf="type === '19-11'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'19rem','width':'35rem'}">
+                <content-modal
+                [type]='type'
+                [data] = 'data'
+                ></content-modal>
+</smx-drag-modal>
+
+<!-- 单元门址修改页面 -->
+<smx-drag-modal *ngIf="type === '19-12'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'21rem','width':'35rem'}">
+                <content-modal
+                [type]='type'
+                [data] = 'data'
+                ></content-modal>
+</smx-drag-modal>
+
+<!-- 操作员与用户站 -->
+<smx-drag-modal *ngIf="type === 20"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'34rem','width':'58rem'}">
+                <content-modal
+                [type]='type'
+                [data] = 'data'
+                ></content-modal>
+</smx-drag-modal>
+
+<!-- 角色与用户站 -->
+<smx-drag-modal *ngIf="type === 21"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'34rem','width':'58rem'}">
+                <content-modal
+                [type]='type'
+                [data] = 'data'
+                ></content-modal>
+</smx-drag-modal>
+
+<!-- 分公司与用户站 -->
+<smx-drag-modal *ngIf="type === 22"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'34rem','width':'58rem'}">
+                <content-modal
+                [type]='type'
+                [data] = 'data'
+                ></content-modal>
+</smx-drag-modal>
+
+
+<!-- 用户站管理 -->
+<smx-drag-modal *ngIf="type === 29"  [header]="title.name" [maximizable]="false" [minimizable]="true" [style]="{'height':'42rem','width':'79rem'}">
+                <div>      
+                        <app-tablegrid
+                        [Headerdata]='data'
+                        [interface_id]='interface_id'
+                        ></app-tablegrid>
+                </div>
+</smx-drag-modal>
+<smx-drag-modal *ngIf="type.one === '29-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'18rem','width':'30rem'}">
+                <content-modal
+                [type]='type'
+                [data] = 'data'
+                [isEdit]='isEdit'
+                ></content-modal>
+</smx-drag-modal>
+
+<!-- 角色维护 -->
+<smx-drag-modal *ngIf="type === 27"  [header]="title.name" [maximizable]="false" [minimizable]="true" [style]="{'height':'39rem','width':'79rem'}">
+                <div>      
+                        <app-tablegrid
+                        [Headerdata]='data'
+                        [interface_id]='interface_id'
+                        >              
+                        </app-tablegrid>
+                </div>
+</smx-drag-modal>
+<smx-drag-modal *ngIf="type.one === '27-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'20rem','width':'30rem'}">
+                <content-modal
+                [type]='type'
+                [data] = 'data'
+                [isEdit]='isEdit'
+                ></content-modal>
+</smx-drag-modal>
+
+<!-- 分公司列表 -->
+<smx-drag-modal *ngIf="type === 31"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'39rem','width':'79rem'}">
+        <div> 
+                              
+                <app-tablegrid
+                        [Headerdata]='data'
+                        [interface_id]='interface_id'
+                ></app-tablegrid>
+        </div>
+</smx-drag-modal>
+<smx-drag-modal *ngIf="type.one === '31-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'19rem','width':'31rem'}">
+                <content-modal
+                        [data]='data'
+                        [type]='type'
+                        [appdate]='appdate'
+                        [isEdit]='isEdit'
+                ></content-modal>
+ </smx-drag-modal>
+
+
+<!-- 地图打点 -->
+<smx-drag-modal *ngIf="type === 30"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'11rem','width':'30rem'}">
+        <content-modal
+        [type]='type'
+        [data] = 'data'
+        ></content-modal>
+</smx-drag-modal>
+<!-- 日志查询 -->
+<smx-drag-modal *ngIf="type === 32"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'47rem','width':'79rem'}">
+        <select-content
+                [interface_id]='interface_id'
+                (queryStreet)='change($event)'
+        ></select-content>
+        <div>               
+        <app-tablegrid
+                [Headerdata]='data'
+                [interface_id]='interface_id'
+                [queryEndData]="queryEndData"
+        ></app-tablegrid>
+        </div>
+</smx-drag-modal>
+<!-- 操作员维护 -->
+<smx-drag-modal *ngIf="type === 23"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'45rem','width':'79rem'}">
+        <select-content
+                [interface_id]='interface_id'
+                (queryStreet)='change($event)'
+        ></select-content>
+        <div>               
+        <app-tablegrid
+                [Headerdata]='data'
+                [interface_id]='interface_id'
+        ></app-tablegrid>
+        </div>
+</smx-drag-modal>
+
+<smx-drag-modal *ngIf="type.one === '39-1'"  [header]="title.name" [maximizable]="false" [minimizable]="false" [style]="{'height':'40rem','width':'36rem'}">
+        <content-modal
+        [type]='type'
+        [data] = 'data'
+        [isEdit]='isEdit'
+        ></content-modal>
+</smx-drag-modal>

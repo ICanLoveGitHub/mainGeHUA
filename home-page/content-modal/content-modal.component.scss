@@ -1,0 +1,464 @@
+.smx-gh-biaozhu{
+  position: relative;
+  left: 9rem;
+  top: 17rem;
+  color: crimson;
+}
+.smx-gh-biaozhu-addres-add{
+position: relative;
+left: 9rem;
+top: 6.8rem;
+color: crimson;
+}
+.smx-gh-biaozhu-addres-updata{
+position: relative;
+left: 9rem;
+top: 0.5rem;
+color: crimson;
+}
+.grid-box {
+  font-size: 0.86rem;
+  background: #fff;
+  /* padding: 15px;*/
+  //padding-top: 0;
+  overflow: scroll;
+  width: 100%;
+  //margin: 0 15px
+  //padding: 0 15px;;
+  border-left: 1px solid #eee;
+
+  .btn {
+    padding: 0.29rem 1.43rem;
+    font-size: 0.86rem;
+    margin-right: 0.71rem;
+  }
+
+  .table {
+    text-align: center;
+    background: #fff;
+    margin-top: 0;
+
+    th {
+      text-align: center;
+      // width: 120px;
+      width: 8.57rem;
+      line-height: 1;
+      vertical-align: inherit;
+      padding: 0.75rem;
+      // height: 40px;
+      height: 3.86rem;
+    }
+
+    td {
+      // width: 120px;
+      width: 8.57rem;
+      line-height: 1;
+      vertical-align: inherit;
+      // height: 40px;
+      height: 2.86rem;
+
+      span {
+        // width: 100px;
+        width: 7.14rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: inline-block;
+        height: 1.43rem;
+        margin-top: 0.9rem;
+      }
+    }
+
+    .change-name-input {
+      line-height: 1;
+      border: 0.07rem solid #ccc;
+      border-radius: 0.21rem;
+    }
+     
+
+    //.check-thead, .check-tbody {
+    //  width: 50px;
+    //}
+  }
+
+  table tbody {
+    display: block;
+    // height: 162px;
+    height: 11.57rem;
+  }
+
+  table thead, tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-bottom: 0.07rem solid #eee;
+  }
+
+}
+
+
+.smx-addresUpdata-button{
+  height: 1.9rem;
+  width: 7rem;
+  border: 0;
+  color: white;
+  background-color: #2282b7;
+  border-radius: 0.2rem;
+  position: relative;
+  left: 2rem;
+}
+.smx-preview-table{
+  position: relative;
+  bottom: 15rem;
+  width: 49.4rem;
+  left: 9rem;
+  /* position: relative;
+  bottom: 15rem;
+  //border-bottom: 1px solid #0c0c0c;
+  width: 49.4rem; */
+}
+.smx-preview-table-more{
+  position: relative;
+  bottom: 15rem;
+  width: 43rem;
+  left: 9rem;
+  border-bottom: 1px solid #0c0c0c;
+}
+
+
+
+.grid {
+  //::-webkit-scrollbar {
+  //  width: 3px;
+  //  height: 5px;
+  //}
+  padding: 0 1.07rem;
+  width: 100%;
+  height: 26rem;
+  background: #fff;
+
+  .grid-box {
+    font-size: 0.86rem;
+    background: #fff;
+    /* padding: 15px;*/
+    //padding-top: 0;
+    overflow: scroll;
+    width: 100%;
+    //margin: 0 15px
+    //padding: 0 15px;;
+    border-left: 1px solid #eee;
+
+    .btn {
+      padding: 0.28rem 1.43rem;
+      font-size: 0.86rem;
+      margin-right: 0.71rem;
+    }
+
+    .table {
+      text-align: center;
+      background: #fff;
+      margin-top: -0.07rem;
+      border: 0.07rem solid #fff;
+
+      th {
+        text-align: center;
+        width: 8.57rem;
+        line-height: 1;
+        vertical-align: inherit;
+        padding: 0.75rem;
+        height: 40px;
+      }
+
+      td {
+        width: 8.57rem;
+        // line-height: 1;
+        vertical-align: inherit;
+        height: 2.86rem;
+
+        span {
+          // width: 119px;
+          width: 8.5rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          display: inline-block;
+          // height: 20px;
+          height: 1.75rem;
+          // margin-top: 0.9rem;
+        }
+      }
+
+      .change-name-input {
+        line-height: 1;
+        border: 0.07rem solid #ccc;
+        border-radius: 0.21rem;
+      }
+       
+
+      //.check-thead, .check-tbody {
+      //  width: 50px;
+      //}
+    }
+
+    table tbody {
+      display: block;
+      height: 34.86rem;
+      //   overflow: scroll;
+      //overflow-x: auto;
+    }
+
+    table thead, tbody tr {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+      border-bottom: 0.071rem solid #eee;
+    }
+
+  }
+
+
+  .grid-box-header {
+    font-size: 0.86rem;
+    background: #fff;
+    height: 3.2rem;
+    width: 100%; 
+    //margin: 0 auto;
+    overflow: hidden;
+    border-left: 0.071rem solid #eee;
+    border-right: 0.071rem  solid #eee;
+
+    .table {
+      text-align: center;
+      background: #fff;
+      margin-top: 0;
+      // width: 800px;
+      th {
+        text-align: center;
+        width: 8.57rem;  
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+      }
+      
+      //.check-thead, .check-tbody {
+      //  width: 50px;
+      //}
+    }
+
+    table thead, tbody tr {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* table thead, tbody tr:hover {
+       background: rgb(231, 252, 255);
+     }*/
+    table thead {
+      position: relative;
+      background-color: white;
+    }
+  }
+  
+
+}
+
+.addressInfo {
+  margin-left: 20px;
+  div {
+    padding: 5px 0 5px 0;
+
+    span {
+      display: inline-block;
+      text-align: -webkit-right;
+      width: 8rem;
+    }
+  }
+}
+
+.streetInfo {
+  margin-left: 20px;
+  div {
+    padding: 5px 0 5px 0;
+    span {
+      display: inline-block;
+      text-align: -webkit-right;
+      width: 8rem;
+    }
+  }
+}
+
+.pqInfo {
+  margin-left: 20px;
+  div {
+    padding: 5px 0 5px 0;
+    span {
+      display: inline-block;
+      text-align: -webkit-right;
+      width: 8rem;
+    }
+  }
+}
+
+.xqInfo {
+  margin-left: 20px;
+  div {
+    padding: 5px 0 5px 0;
+    span {
+      display: inline-block;
+      text-align: -webkit-right;
+      width: 8rem;
+    }
+  }
+}
+
+.sqInfo {
+  margin-left: 20px;
+  div {
+    padding: 5px 0 5px 0;
+    span {
+      display: inline-block;
+      text-align: -webkit-right;
+      width: 8rem;
+    }
+  }
+}
+
+.doorInfo {
+  margin-left: 20px;
+
+  div {
+    a {
+      color: #007bff;
+    }
+  }
+}
+
+.unitDoor {
+  div {
+    padding: 5px 0 5px 0;
+    span {
+      display: inline-block;
+      text-align: -webkit-right;
+      width: 8rem;
+    }
+  }
+}
+
+.smx-gh-thinkspan{
+  position: absolute;
+  width: 15rem;
+  height: 14.2rem;
+  left: 6.2rem;
+  z-index: 9;
+  top: 2.9rem;
+  border-bottom: 1px #1111;
+  box-shadow: 0 3px 3px #ddd;
+  border-spacing: 2px;
+  border-collapse: initial;
+  background-color: #fff;
+ // background-color: #ef1616;
+}
+.smx-gh-thinkspan-addr{
+  position: absolute;
+  width: 15rem;
+  height: 14.2rem;
+  left: 10.4rem;
+  z-index: 9;
+  top: 13.5rem;
+  border-bottom: 1px #1111;
+  box-shadow: 0 3px 3px #ddd;
+  border-spacing: 2px;
+  border-collapse: initial;
+  background-color: #fff;
+}
+.smx-gh-thinkspan-addrs{
+position: absolute;
+width: 15rem;
+height: 14.2rem;
+left: 10.4rem;
+z-index: 9;
+top: 15.6rem;
+border-bottom: 1px #1111;
+box-shadow: 0 3px 3px #ddd;
+border-spacing: 2px;
+border-collapse: initial;
+background-color: #fff;
+}
+.smx-gh-thinkspan-addr{
+    position: absolute;
+    width: 15rem;
+    height: 14.2rem;
+    left: 10.4rem;
+    z-index: 9;
+    top: 13.5rem;
+    border-bottom: 1px #1111;
+    box-shadow: 0 3px 3px #ddd;
+    border-spacing: 2px;
+    border-collapse: initial;
+    background-color: #fff;
+}
+.smx-gh-thinkspan-addrs{
+  position: absolute;
+  width: 15rem;
+  height: 14.2rem;
+  left: 10.4rem;
+  z-index: 9;
+  top: 15.6rem;
+  border-bottom: 1px #1111;
+  box-shadow: 0 3px 3px #ddd;
+  border-spacing: 2px;
+  border-collapse: initial;
+  background-color: #fff;
+}
+.smx-gh-thinktable{
+  height: 13.4rem;
+  margin: 0.2rem 0.2rem 0.2rem;
+  background: #f4fafa;
+  position: relative;
+  top: 0.2rem;
+  border-bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.doorsUpdate {
+
+}
+
+.editor{
+background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQwIDc5LjE2MDQ1MSwgMjAxNy8wNS8wNi0wMTowODoyMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjhEM0MxN0RDNzAyMTFFOUJCNkFFMEM1RTYyODZBREEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjhEM0MxN0VDNzAyMTFFOUJCNkFFMEM1RTYyODZBREEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGOEQzQzE3QkM3MDIxMUU5QkI2QUUwQzVFNjI4NkFEQSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGOEQzQzE3Q0M3MDIxMUU5QkI2QUUwQzVFNjI4NkFEQSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PhIEby0AAAF/SURBVHjajNPLKwVRHMDxueMWRZGyEUVJFkpCoVuSUhY0srG44UqSdwplZYOFV/EPCOW1shEpeUR2dN0VslGyvCQixfen39SkHHPq028e5/zOOb8zE7C0Va5+ZhFiSLXMbfosHBxxbwI6WOIeHjBoGJyHI9SQ5NyboIswhkJePJump+8woRNF9H21eZAry0Lkv8Ha5vCIqZ8VkOCYeMXgHstnY4xs5QL1ttxjUV+UocnTsRX5ep2NXrlmslvCPipkBVtcZGIH3cjAAhIwgCjW0Sz7xooWu08SyAoieEEYo6hGChKlA5ZRgDUpMj4g261jJVH3FMYJOTxoM+xbkk7C0W9lArNBy3/bgPRvQTJmJFHQUOWQ59ENarVWm7hGO3btP2YL6QyOxhK8a2GlLlWII8k2LDlGTRz9P+618o2QD68cQ9j2W4Mv/UfkOA9Qqsda7E3QwN4v9Todd55383jCG070iDvkg3ITLOHw16xxjTJzmufv7ccpg+VUrG8BBgB2HnQ80F/uUAAAAABJRU5ErkJggg==');
+width: 16px;
+height: 16px;
+cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+.gates-desc-smx-gehua{
+  left: 13.2rem;
+  top: 15.6rem;
+}
+
+
+.downPull {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  margin-top: 2px;
+  margin-left: 3px;
+  cursor: pointer;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsSAAALEgHS3X78AAAAnUlEQVQ4jeXT0QnDMAwE0GsmCmiBjpANmmySTepOkEV0M7kIFGhiK04hX61AGOzT+7DxLeeMK6q7RPkDiOSd5FCcNspmbPbzjnoAC8mxSAfl2cVnAXt+a1VNqppVdVz3oraMZ9Oa2YTPYDWkgFpYhFShCDtCrMMvQjIBeACYfOsJ4CUi1QcJoR2GI6QJOTbbKiJzcfgNdLZ+9fcDeANfwQjoiAOKTQAAAABJRU5ErkJggg==');
+}
+
+.smx-loading {
+  position: absolute;
+  display: inline-block;
+  right: 136px;
+  top: 110px;
+}

@@ -1,0 +1,242 @@
+
+<!-- 业务管理区划 -->
+<div class="btn-grid" *ngIf="!interface_id.log">
+    <button *ngIf="!interface_id.opertor" type="button"  class="smx-btn smx-default"
+            style="margin-right: 0.71rem"
+            (click)="addNewData()">添加
+    </button>
+    <button *ngIf="!interface_id.opertor" type="button"  class="smx-btn smx-outline-default"
+            style="margin-right: 0.71rem"
+            (click)="delGridData()"
+            [disabled]="btnDisabled.del ? false: true"
+            >删除
+    </button>
+    <button type="button"  class="smx-btn smx-outline-default"
+            (click)="updateGridData()"
+            [disabled]="btnDisabled.update ? false: true"
+            >修改
+    </button>
+    <span style="position: relative; float: right; right: 2rem; " class="smartmapx-data-totalProperty">总数: {{gridDataLength ? gridDataLength : 0 }}</span>
+</div>
+  <!-- 业务管理区划  行政区划 -->
+  <div class="grid" *ngIf="interface_id.gridType1" >
+      <div class="grid-box-header">
+          <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th style="width:4.29rem">
+                        <input type="checkbox" class="smx-checkbox" (change)="checkAll($event)"  [(ngModel)]="isAllChecked"
+                        >
+                        <span style="display: inline-block;position: relative;top: 0.21rem;color: #9c9c9c">
+                                全选</span>
+                    </th>
+                    <th *ngFor="let item of gridHeader; index as i;" >
+                        <span>{{item.name}}</span>
+                    </th>
+                </tr>
+            </thead>
+          </table>
+        </div>
+  
+          <div class="grid-box" detect-scroll (onScroll)="loadNextPage($event)" (scroll)="scrollLeft($event)">
+                  <table class="table table-bordered table-hover">
+                      <tbody style="height: 26.8rem">
+                          <!-- 表格前面的选择框 -->
+                          <tr *ngFor="let item of gridData; index as i">
+                             <th scope="row" class="check-tbody" style="width:4.29rem">
+                                  <input type="checkbox"  class="smx-checkbox"
+                                          (change)="checkItem(i, $event, item)"
+                                          [(ngModel)]="gridData[i].checked">                   
+                             </th> 
+                             <!-- 表格内容 -->
+                             <td *ngFor="let itemHeader of gridHeader; index as i">
+                                <ng-container>
+                                  <span *ngIf = "itemHeader.id !=='operation' " >{{item[itemHeader.id]}}</span>
+                                </ng-container>
+                             </td>    
+                          </tr>
+  
+                      </tbody>
+                  </table>
+          </div>
+  </div>
+
+  <!-- 片区、小区、社区、街道维护 -->
+  <div class="grid" *ngIf="interface_id.gridType2" style="height: 34rem">
+                <div class="grid-box-header">
+                    <table class="table table-bordered table-hover">
+                      <thead>
+                          <tr>
+                              <th style="width:4.29rem">
+                                  <input type="checkbox" class="smx-checkbox" (change)="checkAll($event)"  [(ngModel)]="isAllChecked"
+                                  >
+                                  <span style="display: inline-block;position: relative;top: 0.21rem;color: #9c9c9c">
+                                          全选</span>
+                              </th>
+                              <th *ngFor="let item of gridHeader; index as i;" >
+                                  <span>{{item.name}}</span>
+                              </th>
+                          </tr>
+                      </thead>
+                    </table>
+                  </div>
+            
+                    <div class="grid-box" detect-scroll (onScroll)="loadNextPage($event)" (scroll)="scrollLeft($event)">
+                            <table class="table table-bordered table-hover">
+                                <tbody style="height: 29.8rem">
+                                    <tr *ngFor="let item of gridData; index as i">
+                                       <th scope="row" class="check-tbody" style="width:4.29rem">
+                                            <input type="checkbox"  class="smx-checkbox"
+                                                    (change)="checkItem(i, $event, item)"
+                                                    [(ngModel)]="gridData[i].checked">                   
+                                       </th> 
+                                       <td *ngFor="let itemHeader of gridHeader; index as i">
+                                          <ng-container>
+                                            <span *ngIf = "itemHeader.id !=='operation' " >{{item[itemHeader.id]}}</span>
+                                          </ng-container>
+                                       </td>    
+                                    </tr>
+            
+                                </tbody>
+                            </table>
+                    </div>
+ </div>
+ <!-- 日志查询 -->
+ <div class="grid" *ngIf="interface_id.gridType3" style="height: 34rem;position: relative;margin-top: 33px">
+    <span style="position: relative; float: right; right: 2rem;bottom: 1.4rem " class="smartmapx-data-totalProperty">总数: {{gridDataLength ? gridDataLength : 0 }}</span>
+    <div class="grid-box-header">
+        <table class="table table-bordered table-hover">
+          <thead>
+              <tr>
+                  <!-- <th *ngFor="let item of gridHeader; index as i;" >
+                      <span>{{item.name}}</span>
+                  </th> -->
+                <th style="width: 1rem">
+                    <span>{{gridHeader[0].name}}</span>
+                </th>
+                <th style="width: 1.5rem">
+                    <span>{{gridHeader[1].name}}</span>
+                </th>
+                <th style="width: 2rem">
+                    <span>{{gridHeader[2].name}}</span>
+                </th>
+                <th>
+                    <span>{{gridHeader[3].name}}</span>
+                </th>
+              </tr>
+          </thead>
+        </table>
+      </div>
+
+        <div class="grid-box" detect-scroll (onScroll)="loadNextPage($event)" (scroll)="scrollLeft($event)">
+                <table class="table table-bordered table-hover">
+                    <tbody style="height: 28.6rem">
+                       <!--  <tr *ngFor="let item of gridData; index as i">
+                           <td *ngFor="let itemHeader of gridHeader; index as i">
+                              <ng-container>
+                                <span>{{item[itemHeader.id]}}</span>
+                              </ng-container>
+                           </td>    
+                        </tr> -->
+                        <tr *ngFor="let item of gridData; index as i">
+                            <td style="width: 1rem">
+                               <ng-container>
+                                 <span style="width: 4.5rem">{{item.op_types}}</span>
+                               </ng-container>
+                            </td>    
+                            <td style="width: 1.5rem">
+                                <ng-container>
+                                  <span style="width: 4.5rem">{{item.operator_name}}</span>
+                                </ng-container>
+                             </td> 
+                             <td style="width: 2rem">
+                                <ng-container>
+                                  <span>{{item.app_dates}}</span>
+                                </ng-container>
+                             </td> 
+                             <td>
+                                <ng-container>
+                                  <span title="{{item.note}}" style="width: 48.4rem">{{item.note}}</span>
+                                </ng-container>
+                             </td> 
+                         </tr>
+
+                    </tbody>
+                </table>
+        </div>
+</div>
+<!-- 操作员管理 -->
+
+ <!-- 地址更新 -->
+ <div class="grid" *ngIf="interface_id.addr_update" style="height: 28rem">
+                <div class="grid-box-header">
+                    <table class="table table-bordered table-hover">
+                      <thead>
+                          <tr>
+                              <th style="width:4.36rem">
+                                  <input type="checkbox" class="smx-checkbox" (change)="checkAll($event)"  [(ngModel)]="isAllChecked"
+                                  >
+                                  <span style="display: inline-block;position: relative;top: 0.21rem;color: #9c9c9c">
+                                          全选</span>
+                              </th>
+
+                              <th *ngFor="let item of gridHeader; index as i;" [ngClass]="{'titleAddress': i ===   4}">
+                                  <span>{{item.name}}</span>
+                              </th>
+                             
+                          </tr>
+                      </thead>
+                    </table>
+                  </div>
+            
+                    <div class="grid-box" detect-scroll (onScroll)="loadNextPage($event)" (scroll)="scrollLeft($event)">
+                            <table class="table table-bordered table-hover">
+                                <tbody style="height: 23rem">
+                                    <tr *ngFor="let item of gridData; index as i">
+                                       <th scope="row" class="check-tbody" style="width:4.36rem;">
+                                            <input type="checkbox"  class="smx-checkbox"
+                                                    (change)="checkItem(i, $event, item)"
+                                                    [(ngModel)]="gridData[i].checked">                   
+                                       </th> 
+                                       <td *ngFor="let itemHeader of gridHeader; index as i" [ngClass]="{'descAddress': i ===   4}">
+                                          <ng-container>
+                                            <span *ngIf = "itemHeader.id !=='operation' && itemHeader.id !=='addr_desc' " >{{item[itemHeader.id]}}</span>
+                                            <span *ngIf = "itemHeader.id ==='operation'" >
+                                              <div class="doorUpdate" (click)="doorUpdate(item)"></div>
+                                              <div class="addPoint" (click)="addPoint(item)"></div>
+                                            </span>
+                                            <span title="{{item[itemHeader.id]}}" *ngIf = "itemHeader.id ==='addr_desc'"><a (click)="descFun(item, $event)" style="text-decoration: underline;color: #007bff;cursor: pointer;">{{item[itemHeader.id]}}</a></span>
+                                          </ng-container>
+                                       </td>   
+                                     
+                                    </tr>
+            
+                                </tbody>
+                            </table>
+                    </div>
+            </div>
+
+<div class="distribute" *ngIf="interface_id.addr_update">
+      <div (click)="combinAddress()">
+              <span>合并地址</span>
+      </div>
+      <div (click)="distributeResicommunity()">
+              <span>分配小区</span>
+      </div>
+      <div  (click)="distributeCommunity()">
+              <span>分配社区</span>
+      </div>
+      <div (click)="distributeSlipCommunity()">
+              <span>分配片区</span>
+      </div>
+      <div (click)="distributeStreet()">
+              <span>分配街道</span>
+      </div>
+      <div (click)="distributeManage()">
+              <span>分配用户站</span>
+      </div>
+</div>
+
+
+
+

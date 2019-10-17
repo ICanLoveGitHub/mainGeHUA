@@ -1,0 +1,130 @@
+    <div class="ssmx-main">
+        <nz-layout style="background: unset">
+          <nz-header>
+            <div class="title-header">
+              <div class="logo">
+                
+              </div>
+              <div class="container">
+                <header class="navbar navbar-fixed-top navbar-toggleable-md" style="min-width: 1200px;">
+                  
+                  <div style="color: #fff;
+                  font-size: 25px;
+                  padding: 0;width: 560px; letter-spacing: 1px">歌华有线标准地址信息管理系统</div>
+                  <div class="navbar-collapse collapse" id="navbarContent" style="max-height: 53px;">
+                    <div class="col text-right" *ngIf="isLogin.val">
+                      <div class="d-inline-block c-main-account">
+                          <div class="userLogo"></div>
+                          <button  class="btn btn-outline-primary" title="{{userName}}" style="border: 0px;text-align: -webkit-left;">{{userName}}</button>
+                      </div>
+                      <div class="d-inline-block c-main-account">
+                            <button  class="btn btn-outline-primary" style="border: 0px;width: 140px">{{roleInfo}}</button>
+                      </div>
+                      <div class="d-inline-block c-main-account">
+                          <div class="logoutLogo"></div>
+                            <button (click)="logout()" class="btn btn-outline-primary" style="border: 0px;width: 49px;    left: -45px;
+                            position: relative;">退出</button>
+                      </div>
+                    </div>
+                  </div>
+                </header>
+                <div *ngIf="httpLoading" class="smx-loading">
+                  <nz-spin nzSimple></nz-spin>
+                </div>
+              </div>
+            </div>
+          </nz-header>
+         
+        </nz-layout>
+    </div>
+    <div id="mapId" style="height: calc( 100% - 50px );width: 100% ; position: relative;"></div>  
+    <nz-content>
+            <router-outlet></router-outlet>
+    </nz-content>
+  
+    <div style="position: absolute; top: 60px ; left: 23px;">
+        <span class="smx-menubutton" (click)="menuClic()"></span>
+    </div>
+    <div *ngIf="menuIsShow" class="smx-menu-all">
+        <div class="address">
+          <div class="title">
+            <div>
+              <span>地址管理</span>
+            </div>
+          </div>
+
+          <div *ngFor="let item of titleNameAddress" style="display: inline-block;">
+              <div class="content" (click)="titleClick(item)">
+                  <span>{{item.module_name}}</span>
+                </div>
+          </div>
+         
+
+        </div>
+        <div class="slipCommunity">
+          <div class="title">
+            <div>
+              <span>片区管理</span>
+            </div>
+          </div>
+          <!-- 片区第一行标题 -->
+          <div>
+              <div *ngFor="let item of titleNameCommunityOne" style="display: inline-block;">
+                  <div class="contentOne" (click)="titleClick(item)">
+                      <span>{{item.module_name}}</span>
+                    </div>
+              </div>
+          </div>
+         <!-- 片区第二行标题 -->
+          <div *ngFor="let item of titleNameCommunityTwo" style="display: inline-block;">
+              <div class="contentTwo" (click)="titleClick(item)">
+                  <span>{{item.module_name}}</span>
+                </div>
+          </div>
+         
+        </div>
+
+        <div class="system">
+          <div class="title">
+            <div>
+                <span>系统管理</span>
+            </div>
+          </div>
+              <!-- 片区第一行标题 -->
+              <div>
+                  <div *ngFor="let item of titleNameSystemOne" style="display: inline-block;">
+                      <div *ngIf="item.module_id === 31" class="contentOne1" (click)="titleClick(item)">
+                          <span >{{item.module_name}}</span>
+                      </div>
+                      <div *ngIf="item.module_id === 32" class="contentOne2" (click)="titleClick(item)">
+                          <span >{{item.module_name}}</span>
+                      </div>
+                  </div>
+              </div>
+             <!-- 片区第二行标题 -->
+              <div *ngFor="let item of titleNameSystemTwo" style="display: inline-block;">
+                  <div *ngIf="item.module_id === 33" class="contentTwo1" (click)="titleClick(item)">
+                      <span >{{item.module_name}}</span>
+                  </div>
+                  <div *ngIf="item.module_id === 34" class="contentTwo2" (click)="titleClick(item)">
+                      <span >{{item.module_name}}</span>
+                  </div>
+                  <div *ngIf="item.module_id === 35" class="contentTwo1" (click)="titleClick(item)">
+                      <span >{{item.module_name}}</span>
+                  </div>
+                  <div *ngIf="item.module_id === 36" class="contentTwo3" (click)="titleClick(item)">
+                      <span >{{item.module_name}}</span>
+                  </div>
+                  <div *ngIf="item.module_id === 37" class="contentTwo4" (click)="titleClick(item)">
+                    <span >{{item.module_name}}</span>
+                </div>
+                  <div *ngIf="item.module_id === 38" class="contentTwo3" (click)="titleClick(item)">
+                      <span >{{item.module_name}}</span>
+                  </div>
+              </div>
+        </div>
+    </div>
+
+    
+
+
